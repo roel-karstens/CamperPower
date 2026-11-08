@@ -1,0 +1,780 @@
+
+
+===== PAGE 2 =====
+SAMENVATTING EN AANBEVELING
+Start met CamperPower, bouw EV als module van je energiemerk en
+test GardenTech smal
+De drie niches liggen dicht bij elkaar in score (3,70 EV, 3,60 Camper, 3,35 Garden),
+maar ze verschillen sterk in waar de kans zit. Zonder zoekvolumedata is dit een
+onderbouwde hypothese, geen uitkomst.
+ 1. CamperPower — eerste standalone site. Grootste onbezette positie: de gevonden
+concurrenten zijn merkblogs, platforms, forums en webshops; ik vond geen onafhankelijke
+Nederlandstalige configurator van verbruik naar stuklijst. Past het best bij jouw elektrotechnische
+en data-achtergrond. Zwak: kleinere, seizoensgebonden markt en onzekere commissies.
+ 2. EVChargeGuide — als module, niet als aparte site. Hoogste momentum (salderen stopt
+op 1 januari 2027) en hoge orderwaarde, maar de zwaarste concurrentie (energiebedrijven,
+offerteplatforms) en directe overlap met je thuisbatterij-/energieproject. Bouw een scherpe
+2027-calculator en meterkast-check binnen dat merk.
+ 3. GardenTech — laatste, en alleen smal. Grootste vraag en hoge orderwaarde, maar het
+best bediende segment (onafhankelijke tests, topXX-sites, merkblogs, retailers) met commissies
+rond 3–4% en een sterke voorjaarspiek. Alleen verder als je een scherpe hoek vindt, bijvoorbeeld
+lastige tuinen met hellingen en smalle doorgangen.
+Wat ik niet kon vaststellen: zoekvolumes (NL/BE), actuele commissies per programma in NL, en
+de marktomvang. Eerst een validatiesprint van twee weken (pagina 20) voordat je gaat bouwen.
+Scorecard (gewogen, 1–5)
+EVChargeGuide
+3,70
+CamperPower
+3,60
+GardenTech
+3,35
+Bij nadruk op lage concurrentie wint Camper; bij nadruk op verdienpotentie
+wint EV (pagina 16).
+Feiten die de keuze sturen [B]
+ Salderen stopt op 1 januari 2027; terugleververgoeding minimaal 50%
+van het kale tarief tot 2030.
+ Zonopbrengst-vuistregels voor campers verschillen per bron (4 zonuren
+vs 85% van Wp): ruimte voor een transparante rekentool.
+ Testaankoop testte in 2026 34 robotmaaiers; er zijn meerdere
+topXX-sites en merkblogs.
+ Gevonden commissies: Robotmaaiers.nl 4%, Mammotion 3%
+(AU-pagina), Camper-Elektra: cookie 30 dagen, % onbekend.
+Leeswijzer
+p. 3
+Framework en leesregels
+p. 4–7 · 8–11 · 12–15
+CamperPower · GardenTech · EVChargeGuide: canvas, concurrentie, klantreis, mockup
+p. 16–21
+Scorecard, seizoen en verdienmodel, content-architectuur, risico, 90-dagenplan, bronnen
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+2
+
+
+===== PAGE 3 =====
+METHODE
+Niche Validation Framework: zes lenzen en één beslismatrix
+Ik combineer vier beproefde hulpmiddelen: een concurrentie-archetypenanalyse met positioneringskaart, Jobs-to-be-Done voor de klantbehoefte, een
+klantreiskaart (oriëntatie → aankoop → gebruik) en een gewogen beslismatrix met gevoeligheidsanalyse.
+1 · Markt
+Vraag, intentie,
+seizoen
+2 · Concurrentie
+Archetypen, gaps,
+positiekaart
+3 · Klantreis
+Jobs-to-be-Done,
+6 stappen
+4 · Verdienmodel
+Commissie, funnel,
+bezoekers voor €500
+5 · Right-to-win
+Kennis, assets,
+moat
+6 · Risico
+Risico’s, kill-
+criteria
+Gewogen beslismatrix + gevoeligheidsanalyse → besluit
+Lens
+Kernvraag
+Methode
+Uitkomst in dit rapport
+1 · Markt en vraag
+Wie zoekt wat, met welke koopintentie, wanneer?
+Doelgroepsegmenten, zoekintentie-hypotheses,
+seizoenspatroon
+Niche-canvas, seizoensheat (p. 17)
+2 · Concurrentie
+Wie bezet de SERP en waar zit de gap?
+Archetypen, sterkte/zwakte, positioneringskaart
+Tabel + kaart per niche
+3 · Klantreis
+Welke vragen en frictie op welk moment, en waar
+verdien je?
+Jobs-to-be-Done, 6-staps reiskaart
+Reiskaart per niche
+4 · Verdienmodel
+Hoeveel bezoekers voor €500 per maand?
+Funnel-rekenmodel (jouw document: 0,15%)
+Unit economics (p. 17)
+5 · Right-to-win
+Waarom jij en niet de rest?
+Kennis, bestaande assets, moat via tools/data
+Scorecard-criteria
+6 · Risico en
+haalbaarheid
+Wat kan misgaan, wanneer stop je?
+Risicoregister, kill-criteria, validatiechecklist
+p. 19–20
+Leesregels: hoe sterk is een bewering?
+ Label
+Betekenis
+Voorbeeld
+[B] Bron gevonden
+Door mij gevonden op een webpagina (november 2026). Bronnen op de laatste pagina.
+Salderen stopt op 1 januari 2027
+[K] Kwalitatieve inschatting
+Mijn oordeel op basis van gevonden pagina’s; niet uitputtend onderzocht.
+Positie op de concurrentiekaart
+[A] Aanname
+Rekenaanname of heuristiek die je moet valideren.
+6% commissie op een camperaccu
+Beperkingen. Ik had geen toegang tot zoekvolume- of backlinktools (Ahrefs, Semrush, Search Console). Alle zoekopdrachten in de klantreizen zijn hypotheses over intentie,
+geen gemeten volumes. Prijzen en commissies verschillen per land en programma en veranderen; controleer ze bij aanmelding.
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+3
+
+
+===== PAGE 4 =====
+CAMPERPOWER · 1/4 · NICHE-CANVAS
+CamperPower: de onafhankelijke rekenmeester voor 12V-systemen
+ Onderdeel
+Inhoud
+Doelgroep
+(1) Camper-/caravaneigenaar die upgradet naar lithium en zon, vaak met een oudere installatie. (2) Zelfbouwer van een buscamper. (3) Vakantieganger die
+zonder walstroom wil staan en twijfelt tussen powerstation en vaste installatie. [K]
+Job-to-be-done
+“Als ik mijn camper off-grid wil gebruiken, wil ik weten welke combinatie van accu, zon en laders past bij mijn verbruik, zonder iets kapot te maken of onveilig
+te installeren.”
+Top-pijnpunten [B]
+• Compatibiliteit: op forums staat dat mensen lithium op een oud EBL-blok aansluiten en dat het stuk gaat.
+• Verwarring over BMS, DC-DC-lader en MPPT bij het moderniseren van een oudere camper.
+• Onzekerheid over installatiekosten en werkuren.
+• Tegenstrijdige vuistregels: 4 zonuren in de NL-zomer (id.nl: 1.200 Wh/dag → 300 Wp) tegenover 85% van het paneelvermogen als dagopbrengst (Anker
+SOLIX).
+Waardepropositie
+Eén configurator: verbruik (Wh/dag) → accu, zon, MPPT, DC-DC, zekeringen en kabels → stuklijst met prijsvergelijking. Aangevuld met een
+compatibiliteitschecker (past lithium bij mijn bestaande lader/EBL?) en veiligheidsgidsen.
+Verdienmodel
+Affiliate op accu’s, panelen, laders en powerstations. Camper-Elektra heeft een eigen programma (cookie 30 dagen) [B]; overige programma’s via
+Daisycon/Awin/Impact te controleren. Commissiepercentage: aanname 6% [A]. Later: leads voor camperbouwers/installateurs [A].
+Right-to-win
+Je werkt dagelijks met netwerk- en vermogensberekeningen, hebt maritieme/elektrische kennis (12V/24V-systemen, accu’s aan boord) en bouwt zelf
+webtools. Dat is precies de moat: de rekenmodule is moeilijk te kopiëren voor een contentbureau. [K]
+Belangrijkste risico
+Foute adviezen kunnen onveilige installaties veroorzaken. Eisen: gedocumenteerde rekenregels, disclaimers, review door een vakman en geen “doe-het-zelf
+op de hoofdspanning”-advies.
+Oordeel: start hier. Beste kruising van een onbezette positie en jouw kennis. Eerstvolgende stap: commissies en toelating valideren (Camper-Elektra plus 2–3
+andere programma’s) en 50 kernzoekwoorden meten.
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+4
+
+
+===== PAGE 5 =====
+CAMPERPOWER · 2/4 · CONCURRENTIEANALYSE
+CamperPower: merken, platforms en forums bezetten de SERP
+ Archetype
+Gevonden voorbeelden
+Sterkte
+Zwakte / gap
+Dreiging
+Merkcontent
+Anker SOLIX blog
+(zonnepaneel op camper,
+powerstation)
+Sterk domein,
+bruikbare
+rekenregel
+Promoot eigen
+producten; geen
+vergelijking over merken
+Midden
+Platforms en
+media
+Campercontact blog,
+ANWB (elektriciteit
+caravan), id.nl,
+AutoScout24
+Autoriteit en bereik
+Algemeen; geen
+configurator; weinig over
+lithium/DC-DC-details
+Midden
+Forums
+camperforum.nl,
+circuitsonline.net
+Echte
+praktijkvragen,
+long-tail
+Ongestructureerd,
+tegenstrijdig, geen
+eindadvies
+Laag
+Webshops en
+installateurs
+Camper-Elektra,
+UMA-tech (installatietips)
+Assortiment,
+koopbereidheid
+Commerciële bias;
+installatietips ≠
+onafhankelijk advies
+Midden
+Voorbeelden: bron gevonden [B]. Sterktes en zwaktes: eigen kwalitatieve inschatting [K].
+Generiek content  →  tool-gedreven / persoonlijk advies
+Commercieel (shop/merk)  →  onafhankelijk
+Onbezette positie
+Anker SOLIX blog
+Campercontact
+ANWB / id.nl
+Forums
+Webshops (Camper-Elektra, UMA-tech)
+★
+Jouw positie
+Kaart: eigen kwalitatieve inschatting [K] op basis van de gevonden pagina’s; geen
+meting.
+Waar je kunt winnen
+ Geen gevonden onafhankelijke NL-tool die van verbruik naar stuklijst rekent [K] (niet uitputtend onderzocht; check ook YouTube en Duitse/Engelse tools).
+ Eén transparante rekenmethode met bronvermelding, in plaats van losse vuistregels per site.
+ Compatibiliteit en veiligheid als hoofdthema: de pijn die op forums zichtbaar is, wordt door de gevonden sites niet systematisch opgelost.
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+5
+
+
+===== PAGE 6 =====
+CAMPERPOWER · 3/4 · KLANTREIS
+CamperPower: van lege accu naar werkend systeem
+ 1 · Trigger
+2 · Oriëntatie
+3 · Dimensioneren
+4 · Vergelijken
+5 · Kopen en
+installeren
+6 · Gebruik en
+uitbreiden
+Vraag
+Mijn accu is leeg op de
+camping; ik wil vrij staan.
+Powerstation of vaste
+installatie?
+Hoeveel Wh, Ah en Wp
+heb ik nodig?
+Welke accu, MPPT en
+DC-DC passen bij elkaar?
+Waar koop ik dit, hoe
+sluit ik het veilig aan?
+Klopt mijn systeem? Hoe
+breid ik uit?
+Zoekintentie [A]
+“camper accu loopt
+leeg”, “stroom zonder
+walstroom”
+“powerstation vs vaste
+installatie camper”,
+“lithium accu camper”
+“hoeveel zonnepaneel
+camper”, “camper
+verbruik berekenen”
+“mppt laadregelaar
+kiezen”, “dc-dc lader
+camper”
+“camper accu aansluiten
+schema”, “kabeldikte
+camper”
+“camper accu
+monitoren”,
+“zonnepanelen
+uitbreiden”
+Emotie en frictie
+Irritatie, wil snel een
+oplossing
+Overweldigd door jargon
+Bang voor een verkeerde
+maat
+Compatibiliteitsangst
+(oude EBL)
+Angst voor een onveilige
+installatie
+Wil optimaliseren,
+nieuwsgierig
+Content en tool
+Probleemgids +
+mini-check “waarom
+loopt mijn accu leeg”
+Beslisboom powerstation
+vs vaste installatie
+★ Verbruiksrekenmod
+ule (Wh/dag)
+★
+Compatibiliteitscheck
++ vergelijking accu’s
+Stuklijst, schema,
+veiligheidscheck, “zoek
+installateur”
+Uitbreidingsplanner,
+monitoring-gids
+Verdienmoment
+—
+Powerstation-affiliate
+Soft CTA: stuklijst
+opslaan
+Affiliate met hoge
+intentie ★
+Affiliate +
+installateurs-lead [A]
+Accessoires, nieuwsbrief
+Momenten van waarheid: stap 3 (de rekentool levert vertrouwen) en stap 4 (compatibiliteit voorkomt duur leed). Hier moet de pagina beter zijn dan elke concurrent; stap 5 is
+waar de affiliate-klik valt. Meet per stap: pagina-views → toolstarts → stuklijst-exports → uitgaande klikken.
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+6
+
+
+===== PAGE 7 =====
+CAMPERPOWER · 4/4 · VISUELE MOCKUP
+CamperPower: configurator van verbruik naar stuklijst
+ camperpower.nl/configurator
+CamperPower
+Veilig installeren
+Producten
+Gidsen
+Configurator
+Bouw je 12V-systeem in 5 minuten
+Van verbruik naar stuklijst — onafhankelijk, met compatibiliteits- en veiligheidscheck.
+1 · Wat gebruik je? (Wh per dag)
+Koelkast (compressor)
+–
+480 Wh
++
+LED-verlichting
+–
+120 Wh
++
+Laptop + telefoons
+–
+240 Wh
++
+Waterpomp
+–
+60 Wh
++
+Ventilator / verwarming
+–
+300 Wh
++
+Totaal
+1.200 Wh/dag
+2 · Dagen zonder walstroom
+2 dagen
+3 · Hoe laad je?
+Zon
+Rijden (DC-DC)
+Walstroom
+Powerstation
+Bereken mijn systeem  →
+Jouw advies  ·  voorbeeldwaarden
+1.200 Wh
+ verbruik
+per dag
+≈ 210 Ah
+ LiFePO4 12,8 V
+2 dagen autonomie
+≈ 300 Wp
+ zon, 4 zonuren
+ NL-zomer
+Stuklijst
+Accu LiFePO4
+12,8 V · ≈ 210 Ah
+Prijzen →
+MPPT-laadregelaar
+≈ 30 A
+Prijzen →
+Zonnepanelen
+2 × 150 Wp
+Prijzen →
+DC-DC lader (rijden)
+≈ 30 A
+Prijzen →
+Zekeringen en kabels
+berekend ✓
+Prijzen →
+✓ Kabeldikte en zekeringen berekend voor jouw stroomsterkte
+⚠ Compatibiliteit: past je oude lader / EBL bij lithium?
+Laat de installatie altijd controleren door een vakman.
+Deel / download stuklijst (PDF)
+CamperPower
+Jouw advies
+1.200 Wh
+verbruik per dag
+≈ 210 Ah
+accu (LiFePO4)
+≈ 300 Wp
+zonnepanelen
+Accu
+210 Ah
+MPPT
+30 A
+DC-DC
+30 A
+Bekijk stuklijst
+Desktop
+Mobiel
+Kernidee
+Eén scherm, drie stappen. Het resultaat is een stuklijst die
+je kunt exporteren en vergelijken tussen shops: daar zit het
+affiliate-moment.
+Vertrouwen
+Zichtbare rekenregels, bronnen, en een expliciete
+compatibiliteits- en veiligheidscheck. Dat onderscheidt je
+van shops en merkblogs.
+Let op
+Alle waarden zijn voorbeeldwaarden voor de mockup en
+geen technisch advies.
+Gebruikersstroom en verdienmoment
+1
+Landing
+Probleem: “camper accu leeg”
+→
+2
+Tool
+Verbruik invullen
+→
+3
+Resultaat
+Accu, zon, laders, zekeringen
+→
+4
+Stuklijst
+Prijzen vergelijken
+→
+5
+Affiliate-klik
+Deeplink naar shop
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+7
+
+
+===== PAGE 16 =====
+BESLUITVORMING
+Scorecard: dicht bij elkaar, de uitkomst hangt af van je prioriteit
+Scores per criterium (1 = slecht, 5 = goed) [K]
+Criterium
+Gewicht
+Camper
+Garden
+EV
+Marktvraag en koopintentie
+20%
+3,0
+4,5
+4,0
+Haalbaarheid t.o.v. concurrentie
+20%
+3,5
+2,0
+2,0
+Verdienpotentie per bezoeker
+20%
+3,5
+4,0
+4,0
+Right-to-win (jouw kennis)
+15%
+5,0
+3,0
+5,0
+Moat via tools/data
+10%
+4,5
+3,0
+4,0
+Seizoensstabiliteit
+5%
+3,0
+2,0
+5,0
+Risico en aansprakelijkheid
+10%
+2,5
+4,0
+3,0
+Gewogen totaal (basis)
+100%
+3,60
+3,35
+3,70
+Gevoeligheidsanalyse: verandert de winnaar als de weging verandert?
+Scenario
+Camper
+Garden
+EV
+Winnaar
+Basis
+3,60
+3,35
+3,70
+EV
+Snel resultaat (lage concurrentie telt zwaar)
+3,73
+2,95
+3,45
+Camper
+Omzetpotentie (verdienpotentie telt zwaar)
+3,45
+3,67
+3,85
+EV
+Hoe lees je dit?
+ Camper wint op haalbaarheid: lage concurrentie, sterk right-to-win en
+een moat via de rekentool; het verliest op marktomvang en risico.
+ EV wint op potentie: hoge orderwaarde, stabiele vraag en perfecte
+kennisfit; het verliest op concurrentie. Daarom als module binnen een
+bestaand energiemerk.
+ Garden verliest op concurrentie en seizoen: hoge vraag, maar de
+positie is bezet en je kennisvoordeel is klein.
+ Eerlijkheid over de scores: de cijfers zijn mijn oordeel op basis van de
+gevonden pagina’s en je profiel, geen meting. Een verschil van 0,1–0,2 punt
+is ruis.
+Aanbevolen volgorde
+ #
+Wat
+Waarom
+1
+CamperPower als nieuwe site
+Beste mix van haalbaarheid en fit
+2
+EV-module in je energiemerk
+Momentum rond 2027, geen extra merk
+3
+GardenTech: validatie, dan
+besluit
+Alleen met scherpe hoek
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+16
+
+
+===== PAGE 17 =====
+SEIZOEN EN VERDIENMODEL
+Seizoen en unit economics voor €500 per maand
+Verwachte seizoensintensiteit van de vraag [A] (hypothese; valideer met Google Trends NL/BE over 5 jaar). Donkerder = meer vraag.
+ jan
+feb
+mrt
+apr
+mei
+jun
+jul
+aug
+sep
+okt
+nov
+dec
+CamperPower
+GardenTech
+EVChargeGuide
+Gevolg: Camper en Garden hebben een voorjaarspiek. Bij een gebruikelijke SEO-opbouwtijd van enkele maanden [A] moeten kernpagina’s uiterlijk in februari live zijn. EV: de
+piek rond de jaarwisseling 2026/27 is deels gemist, de structurele vraag blijft.
+Unit economics [A]: bezoekers die nodig zijn voor €500 commissie per maand, met jouw funnel (25% koopintentie × 20% doorklik × 3% koopt = 0,15%) en een scenario met 0,30% voor
+tool-gedreven pagina’s.
+Niche
+Gem.
+orderwaarde
+Commissie
+Per verkoop
+Verkopen voor €500
+Bezoekers bij 0,15%
+Bezoekers bij 0,30%
+CamperPower
+€300
+6%
+€18
+27,8
+18.500
+9.300
+GardenTech
+€1.000
+4%
+€40
+12,5
+8.300
+4.200
+EVChargeGuide (hardware)
+€700
+5%
+€35
+14,3
+9.500
+4.800
+Aannames: gemiddelde orderwaarde en commissie zijn indicatief; werkelijke programma’s variëren (Robotmaaiers.nl 4%, Mammotion 3% op de AU-pagina). Een installateur-lead bij EV kan per conversie meer
+opleveren; de vergoeding heb ik niet kunnen verifiëren. Bruto commissie ≠ winst: houd rekening met hosting, tools, content en belasting.
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+17
+
+
+===== PAGE 18 =====
+CONTENT-ARCHITECTUUR
+Content-architectuur: één kerntool per niche, daaromheen clusters
+Eerste 15–25 pagina’s per site (zoals in je document aanbevolen), georganiseerd als pillar-tool met clusterpagina’s op basis van de klantreis. Titels zijn voorbeelden [A].
+CamperPower
+Pillar-tool: Configurator verbruik → stuklijst
+ Wat verbruikt een camper? (Wh-tabel per apparaat)
+ Powerstation of vaste installatie?
+ Hoeveel zonnepaneel heb je nodig?
+ LiFePO4 vs AGM voor je camper
+ DC-DC lader of niet: wanneer nodig
+ MPPT-laadregelaar kiezen
+ Lithium op een oude EBL: wat gaat mis
+ Kabeldikte en zekeringen: de basis
+ Camper-elektra upgraden: stap voor stap
+ Walstroom en laden onderweg
+ Complete stuklijsten: weekend, vrij staan, off-grid
+ Veilig installeren: wanneer een vakman
+GardenTech
+Pillar-tool: Tuin-keuzehulp met match-score
+ Robotmaaier met of zonder draad?
+ RTK, vision of LiDAR uitgelegd
+ Robotmaaier voor hellingen
+ Robotmaaier voor smalle doorgangen en zones
+ Totale kosten over 5 jaar
+ Installatie: zelf of laten doen
+ Diefstalbeveiliging en verzekering
+ Onderhoud: messen, accu, winterstalling
+ Robotmaaier vs grasmaaier: kosten en tijd
+ Prijsalerts rond voorjaarsacties
+ Modelvergelijkingen (3–5 per kwartaal)
+ Kleine tuin (<150 m²) specifiek
+EVChargeGuide
+Pillar-tool: Laadpaal-check en 2027-calculator
+ Salderen stopt: wat betekent dat voor laden
+ Stopcontact of laadpaal: kosten en risico’s
+ 1-fase of 3-fasen: wat past bij jou
+ Load balancing uitgelegd
+ Zonneladen: hoe en wanneer
+ Dynamisch contract en laadschema’s
+ Laadpaal installeren: kosten en offerte-checklist
+ Laadpas en abonnement: verborgen kosten
+ Zakelijk thuisladen (RFID, kWh-rapportage)
+ Vlaanderen: capaciteitstarief en laden
+ Laadpaal en thuisbatterij samen
+ Vergelijking laadpalen (kwartaalupdate)
+Schaalbaar bouwen: hergebruik waar mogelijk techstack en designsysteem, maar houd merken, losse domeinen en gescheiden content, zoals je document adviseert. Houd
+per pagina vast: een duidelijke koopvraag, een bron voor elke technische claim en een zichtbare affiliate-vermelding.
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+18
+
+
+===== PAGE 19 =====
+RISICO EN HAALBAARHEID
+Risicoregister en kill-criteria
+ Niche
+Risico
+Impact
+Mitigatie
+CamperPower
+Technische fout leidt tot onveilig advies
+Hoog
+Gedocumenteerde rekenregels, review door een vakman, disclaimers, geen advies voor
+hoofdspanning
+CamperPower
+Beperkt aantal NL-programma’s; commissie onbekend
+Midden
+Eerst commissies en toelating valideren; start met Camper-Elektra en andere shops via
+netwerken
+GardenTech
+Verzadigde markt en lage commissies (3–4%)
+Hoog
+Alleen smalle hoek; start met validatie; geen brede topXX
+GardenTech
+Modellen verouderen; hoge onderhoudslast
+Midden
+Vast update-ritme of beperkt aantal modellen
+EVChargeGuide
+Regelgeving en tarieven veranderen
+Midden
+Datum-gestempelde pagina’s, kwartaalcontrole, bron per rekenregel
+EVChargeGuide
+Overlap met je energieproject en autoriteit splitsen
+Midden
+Bouw als module binnen één merk
+EVChargeGuide
+Werkgeversbeperkingen (nevenwerkzaamheden,
+geheimhouding)
+Hoog
+Contract controleren; alleen publieke kennis en data gebruiken
+Alle drie
+Zoekverkeer zakt door AI-samenvattingen en updates
+Midden
+Tools en data die een samenvatting niet vervangt; e-maillijst; meerdere kanalen
+Alle drie
+Affiliate-transparantie en consumentenregels
+Midden
+Duidelijke vermelding van commerciële relaties; volg ACM-richtlijnen en Reclame Code
+Commissie
+Kill-criteria (voorstel [A])
+ Na de validatiesprint (week 2): stop of pauzeer een niche als er minder dan 2 programma’s zijn die je accepteren, of als de top-10 van de kernzoekwoorden vrijwel volledig uit sterke,
+onafhankelijke autoriteiten bestaat.
+ Drie maanden na lancering: pagina’s geïndexeerd (≥90%) en eerste uitgaande affiliate-klikken. Zonder klikken: pagina’s en intentie herzien, niet meer pagina’s toevoegen.
+ Zes maanden na lancering: onder 2.000 organische bezoeken per maand en geen commissie: pivot (andere hoek) of stop.
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+19
+
+
+===== PAGE 20 =====
+90-DAGENPLAN
+Dertien weken van validatie naar eerste review
+Planning vanaf maandag 9 november 2026, uitgaand van ongeveer 10 uur per week naast je baan [A]. De rode lijn markeert 1 januari 2027, wanneer salderen stopt.
+ w1
+9/11
+w2
+16/11
+w3
+23/11
+w4
+30/11
+w5
+7/12
+w6
+14/12
+w7
+21/12
+w8
+28/12
+w9
+4/1
+w10
+11/1
+w11
+18/1
+w12
+25/1
+w13
+ 1/2
+1 jan 2027: salderen stopt
+Validatiesprint (alle drie)
+Go / no-go + merk, domein, design
+EV: 2027-calculator (MVP)
+Camper: configurator + 12 pagina’s
+Garden: aanvullende validatie → besluit
+Meten: Search Console, klikken, conversie
+Review-moment 8 feb: doorgaan / bijsturen / stoppen
+Validatiechecklist per niche (week 1–2)
+ Check
+Hoe
+Go-drempel (suggestie)
+Zoekvolume en intentie
+Google Keyword Planner, Ahrefs of Semrush: 50 kernzoekwoorden per niche, NL
+en BE
+Gezamenlijk ≥ 15.000 zoekopdrachten per maand
+SERP-kwetsbaarheid
+Handmatige top-10-audit van 15 zoekwoorden: wie rankt?
+≥ 3 van de 10 resultaten zijn forum, merkblog of zwakke site
+Commissies en toelating
+Daisycon, Awin, Impact, TradeTracker + directe aanvraag; productfeeds
+≥ 2 programma’s met ≥ 4% of ≥ €20 per lead
+Seizoen
+Google Trends 5 jaar, NL en BE
+Piek:dal-verhouding bekend en in de planning verwerkt
+Juridisch en werk
+Disclosure-eisen, aansprakelijkheid, arbeidscontract (nevenwerkzaamheden)
+Geen belemmering; zo nodig toestemming
+Affiliate-niches · analyse CamperPower, GardenTech, EVChargeGuide
+Indicatieve analyse, geen omzetgarantie. Bronnen en aannames: zie laatste pagina.
+20
