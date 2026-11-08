@@ -9,8 +9,12 @@
 - `design/DESIGN.md`
 - `design/VISUAL-BENCHMARKS.md`
 - `design/IMAGE-SOURCES.md`
+- `design/IMAGE-REGISTRY.md`
 - `ARCHITECTURE.md`
 - `RULE_ENGINE_SPEC.md`
+
+## Website Content Drafts
+- `website/IMAGE-CREDITS.md`
 
 ## Delivery and Validation
 - `ROADMAP-13-WEEKS.md`
