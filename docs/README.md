@@ -17,6 +17,7 @@
 - `website/IMAGE-CREDITS.md`
 
 ## Delivery and Validation
+- `TODO.md` (openstaande punten)
 - `ROADMAP-13-WEEKS.md`
 - `VERIFICATION_PLAN.md`
 - `TECHNICAL_AUDIT.md`

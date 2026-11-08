@@ -1,15 +1,13 @@
 import type { ImageCredit } from '../data/images'
-import { Link } from '../lib/router'
 
 interface Props {
   image: ImageCredit
   priority?: boolean
   sizes?: string
   className?: string
-  caption?: string
 }
 
-export function Photo({ image, priority, sizes = '(min-width: 1100px) 50vw, 100vw', className, caption }: Props) {
+export function Photo({ image, priority, sizes = '(min-width: 1100px) 50vw, 100vw', className }: Props) {
   return (
     <figure className={`photo ${className ?? ''}`}>
       <img
@@ -23,12 +21,6 @@ export function Photo({ image, priority, sizes = '(min-width: 1100px) 50vw, 100v
         fetchPriority={priority ? 'high' : undefined}
         decoding="async"
       />
-      <figcaption>
-        {caption && <span>{caption} </span>}
-        <Link href="/beeldverantwoording" className="credit">
-          Foto: {image.creator}, {image.license}
-        </Link>
-      </figcaption>
     </figure>
   )
 }
