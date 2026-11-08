@@ -7,6 +7,8 @@
 
 ## Design and Architecture
 - `design/DESIGN.md`
+- `design/VISUAL-BENCHMARKS.md`
+- `design/IMAGE-SOURCES.md`
 - `ARCHITECTURE.md`
 - `RULE_ENGINE_SPEC.md`
 
