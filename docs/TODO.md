@@ -14,6 +14,9 @@ Werklijst voor de website (frontend v2). Afgevinkte punten mogen weg zodra ze li
 
 ## Livegang
 
+De site staat live op https://camperpower.vercel.app. Opnieuw publiceren: `cd frontend && npx vercel deploy --prod`.
+
+- [ ] Vercel koppelen aan de GitHub-repo, zodat elke push naar `main` automatisch live gaat.
 - [ ] Eigen domein camperpower.nl koppelen aan Vercel.
 - [ ] Contactadres invullen in `frontend/src/lib/meta.ts` (`SITE.email`). De contactpagina toont nu "komt binnenkort".
 - [ ] Pagina's vooraf als HTML laten genereren (prerender/SSG) voor betere vindbaarheid in Google.
