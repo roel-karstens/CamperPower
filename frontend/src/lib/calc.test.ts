@@ -86,6 +86,9 @@ describe('solar', () => {
     expect(r.solar.wp).toBe(200)
     expect(r.designGapWh).toBeGreaterThan(0)
     expect(r.checks.some((c) => c.title.includes('dak is te klein'))).toBe(true)
+    const en = calculate(inputs({ months: [9], roofWp: 200 }), 'en')
+    expect(en.checks.some((c) => c.title.includes('roof is too small'))).toBe(true)
+    expect(en.budget.market).toBe('nl')
   })
 
   it('needs less sun with campsite hookup', () => {

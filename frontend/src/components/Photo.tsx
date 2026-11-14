@@ -1,4 +1,6 @@
 import type { ImageCredit } from '../data/images'
+import { displayImage } from '../i18n/images'
+import { useRouter } from '../lib/useRouter'
 
 interface Props {
   image: ImageCredit
@@ -11,7 +13,9 @@ function srcSet(image: ImageCredit) {
   return image.widths.map((w) => `${image.src}-${w}.webp ${w}w`).join(', ')
 }
 
-export function Photo({ image, priority, sizes = '(min-width: 1100px) 50vw, 100vw', className }: Props) {
+export function Photo({ image: source, priority, sizes = '(min-width: 1100px) 50vw, 100vw', className }: Props) {
+  const { locale } = useRouter()
+  const image = displayImage(source, locale)
   const large = image.widths.includes(1600) ? 1600 : Math.max(...image.widths)
   return (
     <figure className={`photo ${className ?? ''}`}>
@@ -31,7 +35,7 @@ export function Photo({ image, priority, sizes = '(min-width: 1100px) 50vw, 100v
 }
 
 export function CoverPhoto({
-  image,
+  image: source,
   className,
   priority,
   sizes = '100vw',
@@ -41,6 +45,8 @@ export function CoverPhoto({
   priority?: boolean
   sizes?: string
 }) {
+  const { locale } = useRouter()
+  const image = displayImage(source, locale)
   const large = Math.max(...image.widths)
   return (
     <img

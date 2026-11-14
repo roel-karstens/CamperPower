@@ -1,6 +1,8 @@
 import { useId, type ReactNode } from 'react'
+import { chrome } from '../i18n/chrome'
 import type { Check } from '../lib/calc'
 import { Link } from '../lib/router'
+import { useRouter } from '../lib/useRouter'
 
 interface Option<T extends string> {
   value: T
@@ -93,6 +95,8 @@ export function NumberStepper({
   compact?: boolean
 }) {
   const id = useId()
+  const { locale } = useRouter()
+  const t = chrome(locale)
   const set = (v: number) => onChange(Math.min(max, Math.max(min, Math.round(v / step) * step)))
   return (
     <div className={`stepper ${compact ? 'stepper-compact' : ''}`}>
@@ -100,7 +104,7 @@ export function NumberStepper({
         {label}
       </label>
       <div className="stepper-control">
-        <button type="button" onClick={() => set(value - step)} disabled={value <= min} aria-label={`${label} verlagen`}>
+        <button type="button" onClick={() => set(value - step)} disabled={value <= min} aria-label={`${label} ${t.decrease}`}>
           −
         </button>
         <input
@@ -119,7 +123,7 @@ export function NumberStepper({
         <span className="stepper-unit" aria-hidden="true">
           {unit}
         </span>
-        <button type="button" onClick={() => set(value + step)} disabled={value >= max} aria-label={`${label} verhogen`}>
+        <button type="button" onClick={() => set(value + step)} disabled={value >= max} aria-label={`${label} ${t.increase}`}>
           +
         </button>
       </div>
@@ -127,12 +131,12 @@ export function NumberStepper({
   )
 }
 
-const LEVEL_LABEL = { stop: 'Let op', warn: 'Controleer', info: 'Goed om te weten' } as const
-
 export function CheckItem({ check }: { check: Check }) {
+  const { locale } = useRouter()
+  const level = chrome(locale).levels[check.level]
   return (
     <div className={`check check-${check.level}`}>
-      <span className="check-level">{LEVEL_LABEL[check.level]}</span>
+      <span className="check-level">{level}</span>
       <h3 className="check-title">{check.title}</h3>
       <p>{check.body}</p>
       {check.link && (

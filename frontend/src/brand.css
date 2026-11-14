@@ -279,6 +279,40 @@ a:hover {
   color: var(--bg);
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: stretch;
+  margin-left: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lang-switch a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  min-height: 42px;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.lang-switch a + a {
+  border-left: 1px solid var(--line);
+}
+
+.lang-switch a[aria-current='true'] {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.nav-mobile .lang-switch {
+  margin: 18px 0 0;
+}
+
 .site-footer {
   background: var(--footer);
   color: var(--footer-fg);
@@ -669,6 +703,150 @@ a:hover {
 
 .section .sun-bars {
   margin-top: 8px;
+}
+
+/* Guide reel: horizontal snap, no shadow, 2px radius. */
+.reel {
+  position: relative;
+}
+
+.guide-reel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 4px;
+  outline: none;
+}
+
+.guide-reel:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+.reel-card {
+  flex: 0 0 min(78vw, 280px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--ink);
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.reel-card img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+.reel-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px 16px;
+}
+
+.reel-card:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.reel-card:hover .card-text,
+.reel-card:hover .card-meta {
+  color: var(--bg);
+}
+
+.reel-nav {
+  display: none;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.reel-btn {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.reel-btn:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.reel-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.guide-card {
+  padding: 0;
+  overflow: hidden;
+  gap: 0;
+}
+
+.guide-card-photo {
+  margin: 0;
+}
+
+.guide-card-photo img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+.guide-card .card-meta,
+.guide-card .card-title,
+.guide-card .card-text {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.guide-card .card-meta {
+  margin-top: 14px;
+}
+
+.guide-card .card-cta {
+  margin: 8px 18px 18px;
+}
+
+.guide-header-photo {
+  margin: 0 0 28px;
+}
+
+.guide-header-photo img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+@media (min-width: 960px) {
+  .reel-nav {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-reel {
+    scroll-behavior: auto;
+  }
 }
 
 @media (max-width: 960px) {
