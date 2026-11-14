@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react'
+import { LanguageSwitch } from './LanguageSwitch'
+import { chrome } from '../i18n/chrome'
 import { Link } from '../lib/router'
 import { useRouter } from '../lib/useRouter'
 
 function ThemeToggle() {
+  const { locale } = useRouter()
+  const label = chrome(locale)
   const [explicit, setExplicit] = useState<'light' | 'dark' | null>(() => {
     const t = document.documentElement.dataset.theme
     return t === 'light' || t === 'dark' ? t : null
@@ -29,7 +33,7 @@ function ThemeToggle() {
   const toDark = theme !== 'dark'
   return (
     <button type="button" className="theme-toggle" onClick={toggle} aria-pressed={theme === 'dark'}>
-      <span className="sr-only">{toDark ? 'Donkere weergave' : 'Lichte weergave'}</span>
+      <span className="sr-only">{toDark ? label.themeDark : label.themeLight}</span>
       <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
         {toDark ? (
           <>
@@ -50,16 +54,10 @@ function ThemeToggle() {
   )
 }
 
-const NAV = [
-  { href: '/accu-leeg', label: 'Accu leeg?' },
-  { href: '/powerstation-of-vast', label: 'Powerstation of vast' },
-  { href: '/lithium-check', label: 'Lithium-check' },
-  { href: '/gidsen', label: 'Gidsen' },
-]
-
 export function Logo() {
+  const { locale } = useRouter()
   return (
-    <Link href="/" className="logo" aria-label="CamperPower, naar de homepage">
+    <Link href="/" className="logo" aria-label={chrome(locale).logo}>
       <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
         <rect width="28" height="28" rx="2" fill="var(--accent)" />
         <rect x="6" y="10" width="14" height="10" rx="1.5" fill="none" stroke="var(--accent-fg)" strokeWidth="1.6" />
@@ -73,12 +71,14 @@ export function Logo() {
 }
 
 export function Header() {
-  const { path } = useRouter()
+  const { path, locale } = useRouter()
+  const t = chrome(locale)
+  const here = `${locale}${path}`
   const [open, setOpen] = useState(false)
-  const [lastPath, setLastPath] = useState(path)
+  const [lastHere, setLastHere] = useState(here)
 
-  if (lastPath !== path) {
-    setLastPath(path)
+  if (lastHere !== here) {
+    setLastHere(here)
     setOpen(false)
   }
 
@@ -93,16 +93,17 @@ export function Header() {
     <header className="site-header">
       <div className="wrap header-inner">
         <Logo />
-        <nav aria-label="Hoofdmenu" className="nav-desktop">
-          {NAV.map((n) => (
+        <nav aria-label={t.navLabel} className="nav-desktop">
+          {t.nav.map((n) => (
             <Link key={n.href} href={n.href} className="nav-link">
               {n.label}
             </Link>
           ))}
         </nav>
+        <LanguageSwitch />
         <ThemeToggle />
         <Link href="/configurator" className="btn btn-primary btn-sm header-cta">
-          Bereken je systeem
+          {t.cta}
         </Link>
         <button
           type="button"
@@ -111,7 +112,7 @@ export function Header() {
           aria-controls="mobile-menu"
           onClick={() => setOpen((o) => !o)}
         >
-          <span className="sr-only">{open ? 'Menu sluiten' : 'Menu openen'}</span>
+          <span className="sr-only">{open ? t.closeMenu : t.openMenu}</span>
           <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
             {open ? (
               <path d="M5 5l12 12M17 5L5 17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -122,16 +123,17 @@ export function Header() {
         </button>
       </div>
       {open && (
-        <nav id="mobile-menu" aria-label="Mobiel menu" className="nav-mobile">
+        <nav id="mobile-menu" aria-label={t.mobileNav} className="nav-mobile">
           <div className="wrap">
-            {NAV.map((n) => (
+            {t.nav.map((n) => (
               <Link key={n.href} href={n.href} className="nav-mobile-link">
                 {n.label}
               </Link>
             ))}
             <Link href="/configurator" className="btn btn-primary">
-              Bereken je systeem
+              {t.cta}
             </Link>
+            <LanguageSwitch />
           </div>
         </nav>
       )}
@@ -140,49 +142,43 @@ export function Header() {
 }
 
 export function Footer() {
+  const { locale } = useRouter()
+  const t = chrome(locale)
   return (
     <footer className="site-footer">
       <div className="wrap footer-grid">
         <div>
           <Logo />
-          <p className="footer-note">
-            Onafhankelijk rekenen aan stroom in je camper. Elke uitkomst is een indicatie. Laat je installatie controleren
-            door een vakman.
-          </p>
+          <p className="footer-note">{t.footerNote}</p>
         </div>
         <div>
-          <h2 className="footer-title">Rekenen</h2>
+          <h2 className="footer-title">{t.footerCalc}</h2>
           <ul>
-            <li><Link href="/configurator">Systeemconfigurator</Link></li>
-            <li><Link href="/accu-leeg">Accu steeds leeg?</Link></li>
-            <li><Link href="/powerstation-of-vast">Powerstation of vast</Link></li>
-            <li><Link href="/lithium-check">Lithium-check</Link></li>
+            {t.footerLinks.calc.map((l) => (
+              <li key={l.href}><Link href={l.href}>{l.label}</Link></li>
+            ))}
           </ul>
         </div>
         <div>
-          <h2 className="footer-title">Leren</h2>
+          <h2 className="footer-title">{t.footerLearn}</h2>
           <ul>
-            <li><Link href="/gidsen">Alle gidsen</Link></li>
-            <li><Link href="/gidsen/verbruik-berekenen">Verbruik berekenen</Link></li>
-            <li><Link href="/gidsen/lifepo4-of-agm">LiFePO4 of AGM</Link></li>
-            <li><Link href="/gidsen/veilig-installeren">Veilig installeren</Link></li>
+            {t.footerLinks.learn.map((l) => (
+              <li key={l.href}><Link href={l.href}>{l.label}</Link></li>
+            ))}
           </ul>
         </div>
         <div>
-          <h2 className="footer-title">Over ons</h2>
+          <h2 className="footer-title">{t.footerAbout}</h2>
           <ul>
-            <li><Link href="/methode">Zo rekenen wij</Link></li>
-            <li><Link href="/bronnen">Bronnen</Link></li>
-            <li><Link href="/zo-verdienen-wij-geld">Zo verdienen wij geld</Link></li>
-            <li><Link href="/beeldverantwoording">Beeldverantwoording</Link></li>
-            <li><Link href="/privacy">Privacy</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
+            {t.footerLinks.about.map((l) => (
+              <li key={l.href}><Link href={l.href}>{l.label}</Link></li>
+            ))}
           </ul>
         </div>
       </div>
       <div className="wrap footer-base">
         <span>© {new Date().getFullYear()} CamperPower</span>
-        <span>Geen cookies, geen tracking.</span>
+        <span>{t.cookies}</span>
       </div>
     </footer>
   )

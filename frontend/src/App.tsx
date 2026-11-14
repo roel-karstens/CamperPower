@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react'
 import { Footer, Header } from './components/Layout'
+import { chrome } from './i18n/chrome'
 import { useRouter } from './lib/useRouter'
 import { AccuLeegPage } from './pages/AccuLeeg'
 import { ConfiguratorPage } from './pages/Configurator'
@@ -42,10 +43,12 @@ function Page() {
 }
 
 export function App() {
+  const { locale } = useRouter()
+  const t = chrome(locale)
   return (
     <>
       <a href="#main" className="skip-link">
-        Direct naar de inhoud
+        {t.skip}
       </a>
       <Header />
       <main id="main" tabIndex={-1}>

@@ -2,6 +2,8 @@ import { Photo } from '../components/Photo'
 import { Eyebrow } from '../components/ui'
 import { HERO_ALTERNATIVES, IMAGES } from '../data/images'
 import { SOURCE_GROUPS } from '../data/sources'
+import { useRouter } from '../lib/useRouter'
+import { ContactEn, CreditsEn, MethodEn, MoneyEn, NotFoundEn, PrivacyEn, SourcesEn } from './infoEn'
 import {
   AGM_DOD,
   INVERTER_EFFICIENCY,
@@ -29,6 +31,11 @@ function PageHead({ eyebrow, title, lead }: { eyebrow: string; title: string; le
 }
 
 export function MethodPage() {
+  const { locale } = useRouter()
+  return locale === 'en' ? <MethodEn /> : <MethodNl />
+}
+
+function MethodNl() {
   usePageMeta(
     'Zo rekenen wij',
     'Alle formules, aannames en data achter de CamperPower-configurator: zondata uit PVGIS, accu, laders, omvormer, kabels en zekeringen.',
@@ -147,6 +154,11 @@ export function MethodPage() {
 }
 
 export function SourcesPage() {
+  const { locale } = useRouter()
+  return locale === 'en' ? <SourcesEn /> : <SourcesNl />
+}
+
+function SourcesNl() {
   usePageMeta('Bronnen', 'De data en publicaties waarop CamperPower zijn berekeningen en gidsen baseert.')
   return (
     <div className="wrap page narrow">
@@ -223,6 +235,11 @@ function CreditList({ images }: { images: typeof HERO_ALTERNATIVES }) {
 }
 
 export function ImageCreditsPage() {
+  const { locale } = useRouter()
+  return locale === 'en' ? <CreditsEn /> : <CreditsNl />
+}
+
+function CreditsNl() {
   usePageMeta('Beeldverantwoording', 'Herkomst en licenties van de foto’s op CamperPower.')
   return (
     <div className="wrap page narrow">
@@ -244,6 +261,11 @@ export function ImageCreditsPage() {
 }
 
 export function PrivacyPage() {
+  const { locale } = useRouter()
+  return locale === 'en' ? <PrivacyEn /> : <PrivacyNl />
+}
+
+function PrivacyNl() {
   usePageMeta('Privacy', 'CamperPower gebruikt geen cookies en geen tracking. Je berekening blijft op je eigen apparaat.')
   return (
     <div className="wrap page narrow">
@@ -274,6 +296,11 @@ export function PrivacyPage() {
 }
 
 export function MoneyPage() {
+  const { locale } = useRouter()
+  return locale === 'en' ? <MoneyEn /> : <MoneyNl />
+}
+
+function MoneyNl() {
   usePageMeta('Zo verdienen wij geld', 'Hoe CamperPower onafhankelijk blijft, en hoe we in de toekomst geld willen verdienen.')
   return (
     <div className="wrap page narrow">
@@ -306,6 +333,11 @@ export function MoneyPage() {
 }
 
 export function ContactPage() {
+  const { locale } = useRouter()
+  return locale === 'en' ? <ContactEn /> : <ContactNl />
+}
+
+function ContactNl() {
   usePageMeta('Contact', 'Neem contact op met CamperPower voor vragen, fouten of aanvullingen.')
   return (
     <div className="wrap page narrow">
@@ -333,6 +365,11 @@ export function ContactPage() {
 }
 
 export function NotFoundPage() {
+  const { locale } = useRouter()
+  return locale === 'en' ? <NotFoundEn /> : <NotFoundNl />
+}
+
+function NotFoundNl() {
   usePageMeta('Pagina niet gevonden', 'Deze pagina bestaat niet (meer).')
   return (
     <div className="wrap page narrow">

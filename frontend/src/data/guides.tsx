@@ -3,7 +3,9 @@ import { Link } from '../lib/router'
 import { fmt } from '../lib/format'
 import { MONTHS_LONG, NL_IRRADIATION, PERFORMANCE_RATIO } from '../lib/solar'
 import { CABLE_TABLE } from '../lib/calc'
+import { useRouter } from '../lib/useRouter'
 import { IMAGES, type ImageCredit } from './images'
+import { GUIDES_EN } from './guides.en'
 
 export interface Guide {
   slug: string
@@ -13,6 +15,11 @@ export interface Guide {
   image?: ImageCredit
   cta: { href: string; label: string }
   body: () => ReactNode
+}
+
+export function useGuides(): Guide[] {
+  const { locale } = useRouter()
+  return locale === 'en' ? GUIDES_EN : GUIDES
 }
 
 export const GUIDES: Guide[] = [

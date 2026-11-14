@@ -24,6 +24,12 @@
     <meta property="og:image:alt" content="CamperPower: een crème camper in een bergweide bij gouden licht" />
     <script>
       try {
+        var path = location.pathname
+        if (path === '/en' || path.indexOf('/en/') === 0) {
+          document.documentElement.lang = 'en'
+          var ogLocale = document.querySelector('meta[property="og:locale"]')
+          if (ogLocale) ogLocale.setAttribute('content', 'en_GB')
+        }
         var t = localStorage.getItem('camperpower.theme')
         if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
         var dark = t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
@@ -33,7 +39,10 @@
   </head>
   <body>
     <div id="root"></div>
-    <noscript>CamperPower heeft JavaScript nodig om te rekenen. Zet JavaScript aan om de configurator te gebruiken.</noscript>
+    <noscript>
+      <p lang="nl">CamperPower heeft JavaScript nodig om te rekenen. Zet JavaScript aan om de configurator te gebruiken.</p>
+      <p lang="en">CamperPower needs JavaScript to do the sums. Turn JavaScript on to use the configurator.</p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

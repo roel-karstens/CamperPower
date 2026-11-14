@@ -279,6 +279,40 @@ a:hover {
   color: var(--bg);
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: stretch;
+  margin-left: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lang-switch a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  min-height: 42px;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.lang-switch a + a {
+  border-left: 1px solid var(--line);
+}
+
+.lang-switch a[aria-current='true'] {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.nav-mobile .lang-switch {
+  margin: 18px 0 0;
+}
+
 .site-footer {
   background: var(--footer);
   color: var(--footer-fg);

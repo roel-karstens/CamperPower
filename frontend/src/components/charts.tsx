@@ -1,7 +1,9 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import { chrome } from '../i18n/chrome'
+import { monthNames } from '../i18n/months'
 import type { DeviceLine, MonthBalance, Result } from '../lib/calc'
-import { fmt, fmt1, kwh } from '../lib/format'
-import { MONTHS_LONG, MONTHS_SHORT } from '../lib/solar'
+import { useFormat } from '../lib/format'
+import { useRouter } from '../lib/useRouter'
 
 /* ---------- System diagram ---------- */
 
@@ -22,22 +24,30 @@ interface DiagramNode extends Box {
 
 type Layout = 'wide' | 'narrow'
 
-function diagramNodes(r: Result, layout: Layout): { nodes: DiagramNode[]; width: number; height: number } {
+function diagramNodes(
+  r: Result,
+  layout: Layout,
+  labels: ReturnType<typeof chrome>['chart'],
+  fmt: (n: number) => string,
+  kwh: (wh: number) => string,
+): { nodes: DiagramNode[]; width: number; height: number } {
   const hasAc = r.inverterW > 0
   const sources = [
-    { id: 'sun', label: 'Zon', value: `${fmt(r.solar.wp)} Wp`, active: true },
-    { id: 'alt', label: 'Dynamo', value: 'tijdens rijden', active: true },
-    { id: 'shore', label: 'Walstroom', value: r.hookupShare > 0 ? 'op de camping' : 'niet gepland', active: r.hookupShare > 0 },
+    { id: 'sun', label: labels.sun, value: `${fmt(r.solar.wp)} Wp`, active: true },
+    { id: 'alt', label: labels.alternator, value: labels.whileDriving, active: true },
+    { id: 'shore', label: labels.shore, value: r.hookupShare > 0 ? labels.onCampsite : labels.notPlanned, active: r.hookupShare > 0 },
   ]
   const devices = [
-    { id: 'mppt', label: 'MPPT-regelaar', value: `${r.mpptA} A`, active: true },
-    { id: 'dcdc', label: 'DC-DC-lader', value: `${r.dcdcA} A`, active: true },
-    { id: 'charger', label: 'Acculader', value: `${r.chargerA} A`, active: r.hookupShare > 0 },
+    { id: 'mppt', label: labels.mppt, value: `${r.mpptA} A`, active: true },
+    { id: 'dcdc', label: labels.dcdc, value: `${r.dcdcA} A`, active: true },
+    { id: 'charger', label: labels.charger, value: `${r.chargerA} A`, active: r.hookupShare > 0 },
   ]
-  const battery = { id: 'battery', label: 'LiFePO4-accu', value: `${fmt(r.battery.ah)} Ah`, active: true }
+  const battery = { id: 'battery', label: labels.battery, value: `${fmt(r.battery.ah)} Ah`, active: true }
   const loads = [
-    { id: 'dc', label: '12V-apparaten', value: kwh(r.dcWh) + '/dag', active: r.dcWh > 0 },
-    ...(hasAc ? [{ id: 'ac', label: `Omvormer ${fmt(r.inverterW)} W`, value: `230 V · ${kwh(r.acWh)}/dag`, active: true }] : []),
+    { id: 'dc', label: labels.dcLoads, value: kwh(r.dcWh) + labels.perDay, active: r.dcWh > 0 },
+    ...(hasAc
+      ? [{ id: 'ac', label: labels.inverter(fmt(r.inverterW)), value: labels.acValue(kwh(r.acWh)), active: true }]
+      : []),
   ]
 
   const nodes: DiagramNode[] = []
@@ -78,7 +88,10 @@ function link(a: Box, b: Box, layout: Layout, slot = 0, slots = 1): string {
 
 function DiagramSvg({ r, layout }: { r: Result; layout: Layout }) {
   const titleId = useId()
-  const { nodes, width, height } = diagramNodes(r, layout)
+  const { locale } = useRouter()
+  const { fmt, kwh } = useFormat()
+  const labels = chrome(locale).chart
+  const { nodes, width, height } = diagramNodes(r, layout, labels, fmt, kwh)
   const by = (id: string) => nodes.find((n) => n.id === id) as DiagramNode
   const battery = by('battery')
   const pairs: [string, string][] = [
@@ -96,7 +109,13 @@ function DiagramSvg({ r, layout }: { r: Result; layout: Layout }) {
       aria-labelledby={titleId}
     >
       <title id={titleId}>
-        {`Systeemschema: zon via een ${r.mpptA} A MPPT-regelaar, de dynamo via een ${r.dcdcA} A DC-DC-lader en walstroom via een ${r.chargerA} A lader laden een ${r.battery.ah} Ah LiFePO4-accu. Die voedt je 12V-apparaten${r.inverterW ? ` en een omvormer van ${r.inverterW} W` : ''}.`}
+        {labels.diagram(
+          r.mpptA,
+          r.dcdcA,
+          r.chargerA,
+          fmt(r.battery.ah),
+          r.inverterW ? labels.inverterClause(fmt(r.inverterW)) : '',
+        )}
       </title>
       <g fill="none" strokeWidth="2" strokeLinecap="round">
         {pairs.map(([s, d], i) => {
@@ -172,6 +191,10 @@ export function EnergyChart({
   designMonth: number
 }) {
   const titleId = useId()
+  const { locale } = useRouter()
+  const { fmt } = useFormat()
+  const labels = chrome(locale).chart
+  const months = monthNames(locale)
   const [ref, measured] = useWidth<HTMLElement>(720)
   const W = Math.max(280, measured)
   const compact = W < 520
@@ -192,10 +215,7 @@ export function EnergyChart({
   return (
     <figure className="chart" ref={ref}>
       <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby={titleId}>
-        <title id={titleId}>
-          Energiebalans per maand: opbrengst uit zon, rijden en walstroom tegenover je verbruik van {fmt(use)} Wh per
-          dag.
-        </title>
+        <title id={titleId}>{labels.balanceTitle(fmt(use))}</title>
         {ticks.map((t) => (
           <g key={t} className="grid">
             <line x1={left} x2={W - right} y1={y(t)} y2={y(t)} />
@@ -218,7 +238,13 @@ export function EnergyChart({
           return (
             <g key={i} className={inTrip ? 'month' : 'month month-off'}>
               <title>
-                {`${MONTHS_LONG[i]}: zon ${fmt(m.solar)} Wh, rijden ${fmt(m.drive)} Wh, walstroom ${fmt(m.hookup)} Wh per dag${short > 0 ? `, tekort ${fmt(short)} Wh` : ''}`}
+                {labels.monthTitle(
+                  months.long[i],
+                  fmt(m.solar),
+                  fmt(m.drive),
+                  fmt(m.hookup),
+                  short > 0 ? labels.shortClause(fmt(short)) : '',
+                )}
               </title>
               {segs.map((s) => {
                 const y0 = y(acc)
@@ -230,34 +256,34 @@ export function EnergyChart({
                 <rect className="seg seg-short" x={x} y={y(use)} width={bw} height={y(supply) - y(use)} />
               )}
               <text x={x + bw / 2} y={H - 12} textAnchor="middle" className={i === designMonth ? 'axis axis-strong' : 'axis'}>
-                {slot < 34 ? MONTHS_SHORT[i][0] : MONTHS_SHORT[i]}
+                {slot < 34 ? months.short[i][0] : months.short[i]}
               </text>
             </g>
           )
         })}
         <line x1={left} x2={W - right} y1={y(use)} y2={y(use)} className="use-line" />
         <text x={W - right} y={y(use) - 8} textAnchor="end" className="use-label">
-          verbruik {fmt(use)} Wh/dag
+          {labels.useLine(fmt(use))}
         </text>
       </svg>
       <figcaption className="legend">
-        <span><i className="key key-solar" />Zon</span>
-        <span><i className="key key-drive" />Rijden</span>
-        <span><i className="key key-hookup" />Walstroom</span>
-        <span><i className="key key-short" />Tekort</span>
-        <span className="legend-note">Lichte kolommen: je reist dan niet.</span>
+        <span><i className="key key-solar" />{labels.legendSun}</span>
+        <span><i className="key key-drive" />{labels.legendDrive}</span>
+        <span><i className="key key-hookup" />{labels.legendHookup}</span>
+        <span><i className="key key-short" />{labels.legendShort}</span>
+        <span className="legend-note">{labels.legendNote}</span>
       </figcaption>
       <details className="table-toggle">
-        <summary>Bekijk als tabel</summary>
+        <summary>{labels.asTable}</summary>
         <div className="table-scroll">
           <table className="data-table">
             <thead>
               <tr>
-                <th scope="col">Maand</th>
-                <th scope="col">Zon</th>
-                <th scope="col">Rijden</th>
-                <th scope="col">Walstroom</th>
-                <th scope="col">Saldo</th>
+                <th scope="col">{labels.colMonth}</th>
+                <th scope="col">{labels.colSun}</th>
+                <th scope="col">{labels.colDrive}</th>
+                <th scope="col">{labels.colHookup}</th>
+                <th scope="col">{labels.colBalance}</th>
               </tr>
             </thead>
             <tbody>
@@ -265,7 +291,7 @@ export function EnergyChart({
                 const saldo = m.solar + m.drive + m.hookup - m.use
                 return (
                   <tr key={i} className={travel.includes(i) ? '' : 'muted'}>
-                    <th scope="row">{MONTHS_LONG[i]}</th>
+                    <th scope="row">{months.long[i]}</th>
                     <td className="num">{fmt(m.solar)} Wh</td>
                     <td className="num">{fmt(m.drive)} Wh</td>
                     <td className="num">{fmt(m.hookup)} Wh</td>
@@ -296,6 +322,7 @@ function niceTicks(max: number): number[] {
 /* ---------- Device breakdown ---------- */
 
 export function DeviceBars({ lines, total }: { lines: DeviceLine[]; total: number }) {
+  const { fmt } = useFormat()
   const sorted = [...lines].sort((a, b) => b.wh - a.wh)
   const max = sorted[0]?.wh ?? 1
   return (
@@ -321,27 +348,33 @@ export function DeviceBars({ lines, total }: { lines: DeviceLine[]; total: numbe
 /* ---------- Battery days ---------- */
 
 export function BatteryDays({ usableWh, dailyWh }: { usableWh: number; dailyWh: number }) {
+  const { locale } = useRouter()
+  const { fmt1 } = useFormat()
+  const labels = chrome(locale).chart
   const days = dailyWh > 0 ? usableWh / dailyWh : 0
   const shown = Math.min(days, 7)
   const full = Math.floor(shown)
   const partial = shown - full
+  const shownDays = fmt1(days)
   return (
     <div className="battery-days">
-      <div className="battery-shell" role="img" aria-label={`Een volle accu gaat ${fmt1(days)} dagen mee zonder laden.`}>
+      <div className="battery-shell" role="img" aria-label={labels.batteryAlt(shownDays)}>
         {Array.from({ length: full }, (_, i) => (
           <span key={i} className="day-cell">
-            <span>dag {i + 1}</span>
+            <span>{labels.day(i + 1)}</span>
           </span>
         ))}
         {partial > 0.05 && (
           <span className="day-cell day-partial" style={{ flexGrow: partial }}>
-            <span>{fmt1(partial * 24)} u</span>
+            <span>
+              {fmt1(partial * 24)} {locale === 'nl' ? 'u' : 'h'}
+            </span>
           </span>
         )}
       </div>
       <p className="battery-caption">
-        <strong className="num">{fmt1(days)} dagen</strong> zonder zon, rijden of walstroom
-        {days > 7 ? ' (we tonen er maximaal 7)' : ''}.
+        <strong className="num">{labels.daysWord(shownDays)}</strong> {labels.without}
+        {days > 7 ? labels.weekCap : ''}.
       </p>
     </div>
   )
