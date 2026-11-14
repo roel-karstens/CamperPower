@@ -1,7 +1,5 @@
 import { useRef, useState } from 'react'
-import { Photo } from '../components/Photo'
 import { ChoiceCards, Eyebrow } from '../components/ui'
-import { IMAGES } from '../data/images'
 import { usePageMeta } from '../lib/meta'
 import { Link } from '../lib/router'
 
@@ -106,16 +104,13 @@ export function LithiumCheckPage() {
 
   return (
     <div className="wrap page tool-page">
-      <header className="page-head page-head-photo">
-        <div>
-          <Eyebrow>Check</Eyebrow>
-          <h1>Kan lithium in jouw camper?</h1>
-          <p className="lead">
-            Een LiFePO4-accu is lichter en gaat langer mee. Maar je laders moeten er wel bij passen. Controleer zeven punten
-            en krijg een actielijst.
-          </p>
-        </div>
-        <Photo image={IMAGES.charger} sizes="(min-width: 960px) 30vw, 100vw" className="photo-compact" />
+      <header className="page-head">
+        <Eyebrow>Check</Eyebrow>
+        <h1>Kan lithium in jouw camper?</h1>
+        <p className="lead">
+          Een LiFePO4-accu is lichter en gaat langer mee. Maar je laders moeten er wel bij passen. Zeven korte vragen, daarna
+          eerst wat je moet oplossen.
+        </p>
       </header>
 
       <div className="tool-layout">
@@ -157,7 +152,7 @@ export function LithiumCheckPage() {
               </h2>
             </div>
             <ul className="traffic">
-              {[...stops, ...fixes, ...rows.filter((r) => r.opt?.light === 'ok')].map(({ item, opt }) =>
+              {[...stops, ...fixes].map(({ item, opt }) =>
                 opt ? (
                   <li key={item.id} className={`traffic-row light-${opt.light}`}>
                     <span className="traffic-label">{LIGHT_LABEL[opt.light]}</span>
@@ -169,6 +164,28 @@ export function LithiumCheckPage() {
                 ) : null,
               )}
             </ul>
+            {rows.some((r) => r.opt?.light === 'ok') && (
+              <details className="assumptions">
+                <summary>
+                  <h2>Al in orde</h2>
+                </summary>
+                <ul className="traffic">
+                  {rows
+                    .filter((r) => r.opt?.light === 'ok')
+                    .map(({ item, opt }) =>
+                      opt ? (
+                        <li key={item.id} className="traffic-row light-ok">
+                          <span className="traffic-label">{LIGHT_LABEL.ok}</span>
+                          <div>
+                            <h3>{item.question}</h3>
+                            <p>{opt.advice}</p>
+                          </div>
+                        </li>
+                      ) : null,
+                    )}
+                </ul>
+              </details>
+            )}
             <div className="next-box">
               <h3>Welke maat accu en laders?</h3>
               <p>De configurator houdt rekening met je huidige accu, EBL en dynamo, en geeft een stuklijst.</p>

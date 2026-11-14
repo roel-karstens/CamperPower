@@ -1,5 +1,6 @@
+import { Photo } from '../components/Photo'
 import { Eyebrow } from '../components/ui'
-import { IMAGES, IMAGE_CHANGES } from '../data/images'
+import { HERO_ALTERNATIVES, IMAGES } from '../data/images'
 import { SOURCE_GROUPS } from '../data/sources'
 import {
   AGM_DOD,
@@ -40,6 +41,7 @@ export function MethodPage() {
         title="Zo rekenen wij"
         lead="Elke uitkomst van de configurator is na te rekenen. Hier staan alle formules en aannames. Zie je een fout? Laat het ons weten."
       />
+      <Photo image={IMAGES.dyke} sizes="(min-width: 800px) 760px, 100vw" />
       <div className="prose">
         <h2>1. Dagverbruik</h2>
         <p>Per apparaat: vermogen × uren per dag. Apparaten op 230 V delen we door het rendement van de omvormer.</p>
@@ -177,49 +179,65 @@ export function SourcesPage() {
   )
 }
 
+function CreditList({ images }: { images: typeof HERO_ALTERNATIVES }) {
+  return (
+    <ul className="credit-list">
+      {images.map((img) => (
+        <li key={img.id} className="credit-item">
+          <img src={`${img.src}-800.webp`} alt="" width={160} height={Math.round(160 / img.ratio)} loading="lazy" />
+          <div>
+            <h2>{img.title}</h2>
+            <dl>
+              <dt>Maker</dt>
+              <dd>{img.creator}</dd>
+              <dt>Licentie</dt>
+              <dd>
+                {img.licenseUrl ? (
+                  <a href={img.licenseUrl} target="_blank" rel="noopener noreferrer">
+                    {img.license}
+                  </a>
+                ) : (
+                  img.license
+                )}
+              </dd>
+              <dt>Bron</dt>
+              <dd>
+                {img.sourceUrl ? (
+                  <a href={img.sourceUrl} target="_blank" rel="noopener noreferrer">
+                    {img.sourceLabel}
+                  </a>
+                ) : (
+                  img.sourceLabel
+                )}
+              </dd>
+              <dt>Gebruikt op</dt>
+              <dd>{img.usedOn}</dd>
+              <dt>Wijzigingen</dt>
+              <dd>{img.changes}</dd>
+            </dl>
+          </div>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export function ImageCreditsPage() {
   usePageMeta('Beeldverantwoording', 'Herkomst en licenties van de foto’s op CamperPower.')
-  const images = Object.values(IMAGES)
   return (
     <div className="wrap page narrow">
       <PageHead
         eyebrow="Verantwoording"
         title="Beeldverantwoording"
-        lead="Alle foto’s komen van Wikimedia Commons en vallen onder een Creative Commons-licentie. Dank aan de makers."
+        lead="Sfeerbeelden zijn AI-gegenereerd met Grok Bot GenerateImage. De gidsen gebruiken vrije stockfoto’s van Pexels. Technische details verzinnen we niet."
       />
-      <ul className="credit-list">
-        {images.map((img) => (
-          <li key={img.id} className="credit-item">
-            <img src={`${img.src}-800.webp`} alt="" width={160} height={Math.round(160 / img.ratio)} loading="lazy" />
-            <div>
-              <h2>{img.title}</h2>
-              <dl>
-                <dt>Maker</dt>
-                <dd>{img.creator}</dd>
-                <dt>Licentie</dt>
-                <dd>
-                  <a href={img.licenseUrl} target="_blank" rel="noopener noreferrer">
-                    {img.license}
-                  </a>
-                </dd>
-                <dt>Bron</dt>
-                <dd>
-                  <a href={img.sourceUrl} target="_blank" rel="noopener noreferrer">
-                    Wikimedia Commons
-                  </a>
-                </dd>
-                <dt>Gebruikt op</dt>
-                <dd>{img.usedOn}</dd>
-                <dt>Wijzigingen</dt>
-                <dd>{IMAGE_CHANGES}</dd>
-              </dl>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <CreditList images={Object.values(IMAGES)} />
+      <h2>Alternatieve hero’s, niet geplaatst</h2>
+      <p className="muted">Deze twee beelden zitten in de set en in de broncode, maar staan niet op een pagina.</p>
+      <CreditList images={HERO_ALTERNATIVES} />
       <p className="muted small" lang="en">
-        All photos are from Wikimedia Commons, used under the Creative Commons licences listed above. Changes: resized and
-        converted to WebP.
+        Atmosphere photos are labelled “AI-gegenereerd met Grok Bot GenerateImage”. Guide photos are from Pexels under the
+        Pexels License. Credits are listed here, not under the pictures.
       </p>
     </div>
   )
@@ -278,6 +296,7 @@ export function MoneyPage() {
         <h2>Onze regels</h2>
         <ul>
           <li>Een affiliate-link is altijd herkenbaar als affiliate-link.</li>
+          <li>Een affiliate-link staat hooguit één keer op een pagina, en nooit bij een negatief advies.</li>
           <li>De berekening bepaalt het advies, nooit de vergoeding.</li>
           <li>We noemen ook producten waar we niets aan verdienen, als die beter passen.</li>
         </ul>

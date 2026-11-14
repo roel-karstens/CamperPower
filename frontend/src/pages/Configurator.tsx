@@ -499,6 +499,9 @@ function ResultView({
             </dd>
           </div>
         </dl>
+        <p className="source-line">
+          Bron: PVGIS, De Bilt, en de aannames op de <Link href="/methode">methodepagina</Link>. Prijzen zijn een indicatie.
+        </p>
         <div className="result-actions no-print">
           <button type="button" className="btn btn-secondary btn-sm" onClick={share}>
             Kopieer deellink

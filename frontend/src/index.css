@@ -2,34 +2,54 @@
    CamperPower — design tokens
    ========================================================================== */
 :root {
-  --ink: #0f172a;
-  --ink-2: #334155;
-  --muted: #5b6b66;
-  --canvas: #f7f9f7;
-  --tint: #eef3ef;
-  --surface: #ffffff;
-  --border: #d6ddd8;
-  --border-strong: #b9c4bd;
-  --primary: #1f6e5a;
-  --primary-dark: #164e41;
-  --primary-tint: #e4efea;
-  --accent: #c98a2e;
-  --accent-dark: #8a5a14;
-  --accent-tint: #f6ebd9;
-  --info: #2d6fa3;
-  --info-tint: #e3edf5;
-  --danger: #b43f3f;
-  --danger-tint: #f7e6e6;
+  /* Light theme. Derived from hero-mountains; see docs/design/DESIGN-SYSTEM.md. */
+  --bg: #f6f0e4;
+  --paper: #fffbf6;
+  --paper-2: #e8e0d0;
+  --ink: #1c160f;
+  --ink-2: #3c3228;
+  --muted: #5c5146;
+  --line: #7a6858;
+  --line-strong: #5c4c3e;
+  --accent: #9a3f26;
+  --accent-hover: #7a3018;
+  --accent-fg: #fff8f1;
+  --text: #1e4636;
+  --mark: #f0d4a6;
+  --tint: #f7f2e8;
+  --ok: #1e5c3e;
+  --warn: #8a5610;
+  --err: #9c332c;
+  --err-tint: #f8e4de;
+  --sun: #b8732a;
+  --footer: #1a140f;
+  --footer-fg: #f6f0e6;
+  --footer-muted: #d4c4b4;
+  --footer-hover: #f3d7a8;
 
-  --font-display: 'Sora Variable', 'Sora', system-ui, sans-serif;
+  --canvas: var(--bg);
+  --surface: var(--paper);
+  --border: var(--line);
+  --border-strong: var(--line-strong);
+  --primary: var(--text);
+  --primary-dark: #16352a;
+  --primary-tint: var(--tint);
+  --accent-dark: var(--ink);
+  --accent-tint: var(--mark);
+  --info: var(--text);
+  --info-tint: var(--tint);
+  --danger: var(--err);
+  --danger-tint: var(--err-tint);
+
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
   --font-body: 'Source Sans 3 Variable', 'Source Sans 3', system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
 
-  --radius: 8px;
-  --radius-sm: 6px;
+  --radius: 2px;
+  --radius-sm: 2px;
   --wrap: 1180px;
   --gutter: clamp(20px, 4vw, 32px);
   --header-h: 64px;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
 
   color-scheme: light;
 }
@@ -215,7 +235,7 @@ textarea {
 }
 
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -225,7 +245,7 @@ textarea {
 }
 
 .formula {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.6;
   background: var(--surface);
@@ -238,7 +258,7 @@ textarea {
 
 .flag {
   display: inline-block;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -253,7 +273,7 @@ textarea {
 
 .tag {
   display: inline-block;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 500;
   border-radius: 4px;
@@ -489,7 +509,7 @@ textarea {
 }
 
 .footer-title {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -692,7 +712,7 @@ textarea {
 }
 
 .card-meta {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -738,7 +758,7 @@ textarea {
 }
 
 .panel-title {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -774,7 +794,7 @@ textarea {
 }
 
 .sun-month {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   color: var(--muted);
 }
 
@@ -793,7 +813,7 @@ textarea {
 }
 
 .sun-val {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   text-align: right;
   color: var(--ink-2);
 }
@@ -823,7 +843,7 @@ textarea {
   place-items: center;
   border: 1px solid var(--primary);
   border-radius: 50%;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.85rem;
   color: var(--primary);
 }
@@ -1025,7 +1045,7 @@ textarea {
 
 .source-pub {
   display: block;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.78rem;
   color: var(--muted);
   margin-top: 2px;
@@ -1286,7 +1306,7 @@ textarea {
   border: 0;
   border-left: 1px solid var(--border);
   text-align: right;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.95rem;
   background: var(--surface);
   padding: 0 4px;
@@ -1301,7 +1321,7 @@ textarea {
 }
 
 .stepper-unit {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.85rem;
   color: var(--muted);
   padding: 0 10px 0 4px;
@@ -1453,7 +1473,7 @@ input[type='checkbox'] {
 
 .pill {
   flex-shrink: 0;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -1559,7 +1579,7 @@ input[type='checkbox'] {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.78rem;
   color: var(--muted);
 }
@@ -1653,7 +1673,7 @@ input[type='checkbox'] {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -1739,7 +1759,7 @@ input[type='checkbox'] {
   place-items: center;
   border-radius: 50%;
   border: 1px solid currentColor;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.75rem;
 }
 
@@ -1799,7 +1819,7 @@ input[type='checkbox'] {
 }
 
 .summary-title {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -1893,7 +1913,7 @@ input[type='checkbox'] {
 }
 
 .month-name {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.78rem;
   text-align: center;
   color: var(--muted);
@@ -1924,7 +1944,7 @@ input[type='checkbox'] {
 }
 
 .device-group .field-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -1988,7 +2008,7 @@ input[type='checkbox'] {
 
 .device-wh {
   margin-left: auto;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.95rem;
 }
@@ -2125,7 +2145,7 @@ input[type='checkbox'] {
 }
 
 .bom-spec {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.88rem;
   color: var(--primary-dark);
   margin: 0 0 6px;
@@ -2147,7 +2167,7 @@ input[type='checkbox'] {
 
 .bom-tip-label {
   display: block;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2156,7 +2176,7 @@ input[type='checkbox'] {
 }
 
 .bom-price {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.95rem;
   text-align: right;
@@ -2211,7 +2231,7 @@ input[type='checkbox'] {
 }
 
 .check-level {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -2264,7 +2284,7 @@ input[type='checkbox'] {
 
 .assumptions summary::after {
   content: '+';
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 1.3rem;
   color: var(--muted);
 }
@@ -2328,7 +2348,7 @@ input[type='checkbox'] {
 }
 
 .data-table thead th {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -2349,7 +2369,7 @@ input[type='checkbox'] {
 
 .data-table td.num,
 .data-table th.num {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.88rem;
 }
 
@@ -2452,7 +2472,7 @@ input[type='checkbox'] {
 }
 
 .node-value {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 12px;
   fill: var(--ink-2);
 }
@@ -2518,7 +2538,7 @@ input[type='checkbox'] {
 
 .chart .grid text,
 .chart .axis {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 11px;
   fill: var(--muted);
 }
@@ -2567,7 +2587,7 @@ input[type='checkbox'] {
 }
 
 .use-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 500;
   fill: var(--ink);
@@ -2652,7 +2672,7 @@ input[type='checkbox'] {
 .bar-value {
   grid-row: 1;
   grid-column: 2;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.85rem;
   text-align: right;
   white-space: nowrap;
@@ -2712,7 +2732,7 @@ input[type='checkbox'] {
   background: var(--primary);
   color: #fff;
   border-radius: 4px;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.72rem;
   overflow: hidden;
   white-space: nowrap;

@@ -181,6 +181,14 @@ export function PowerstationPage() {
             <h2 id="ps-result" ref={resultRef} tabIndex={-1}>
               {verdict}
             </h2>
+            <p className="lead">{detail}</p>
+            <dl className="stats stats-single">
+              <div className="is-mark">
+                <dt>Tussen twee laadmomenten</dt>
+                <dd>{res.need.toLocaleString('nl-NL')} Wh</dd>
+              </div>
+            </dl>
+            <p className="source-line">Schatting uit je antwoorden, geen meting.</p>
             <div className="lean" role="img" aria-label={`Advies: ${verdict}`}>
               <div className="lean-track">
                 <span className="lean-marker" style={{ left: `${pos}%` }} />
@@ -190,12 +198,6 @@ export function PowerstationPage() {
                 <span>Vaste installatie</span>
               </div>
             </div>
-            <p>{detail}</p>
-            <p className="muted small">
-              Indicatie van je verbruik over een periode zonder laden: ongeveer{' '}
-              <strong className="num">{res.need.toLocaleString('nl-NL')} Wh</strong>.
-            </p>
-
             <div className="reasons">
               <div>
                 <h3>Voor een powerstation</h3>

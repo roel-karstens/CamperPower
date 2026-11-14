@@ -1,7 +1,6 @@
 import { Photo } from '../components/Photo'
 import { Eyebrow } from '../components/ui'
 import { GUIDES } from '../data/guides'
-import { IMAGES } from '../data/images'
 import { usePageMeta } from '../lib/meta'
 import { Link } from '../lib/router'
 import { NotFoundPage } from './Info'
@@ -31,13 +30,10 @@ export function GuidesPage() {
   )
   return (
     <div className="wrap page">
-      <header className="page-head page-head-photo">
-        <div>
-          <Eyebrow>Gidsen</Eyebrow>
-          <h1>Begrijp wat je koopt</h1>
-          <p className="lead">Korte gidsen zonder jargon. Elke gids eindigt bij een hulpmiddel om het voor jouw camper uit te rekenen.</p>
-        </div>
-        <Photo image={IMAGES.departure} sizes="(min-width: 960px) 30vw, 100vw" className="photo-compact" />
+      <header className="page-head">
+        <Eyebrow>Gidsen</Eyebrow>
+        <h1>Begrijp wat je koopt</h1>
+        <p className="lead">Korte gidsen zonder jargon. Elke gids eindigt bij een hulpmiddel om het voor jouw camper uit te rekenen.</p>
       </header>
       {TOPICS.map((t) => (
         <section key={t.title} className="guide-topic" aria-labelledby={`topic-${t.slugs[0]}`}>
