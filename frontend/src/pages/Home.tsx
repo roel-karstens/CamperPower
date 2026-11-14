@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
 import { EnergyChart, SystemDiagram } from '../components/charts'
-import { Photo } from '../components/Photo'
+import { CoverPhoto, Photo } from '../components/Photo'
 import { Eyebrow } from '../components/ui'
 import { GUIDES } from '../data/guides'
 import { IMAGES } from '../data/images'
 import { calculate } from '../lib/calc'
 import { initialState } from '../lib/configState'
-import { fmt, kwh } from '../lib/format'
+import { fmt, fmt1, kwh } from '../lib/format'
 import { usePageMeta } from '../lib/meta'
 import { Link } from '../lib/router'
 import { MONTHS_SHORT, NL_IRRADIATION, PERFORMANCE_RATIO } from '../lib/solar'
@@ -48,33 +48,34 @@ export function HomePage() {
     return { state: s, result: calculate(s) }
   }, [])
   const maxH = Math.max(...NL_IRRADIATION)
+  const july = 100 * NL_IRRADIATION[6] * PERFORMANCE_RATIO
+  const december = 100 * NL_IRRADIATION[11] * PERFORMANCE_RATIO
 
   return (
     <>
-      <section className="hero">
-        <div className="wrap hero-grid">
-          <div className="hero-copy">
-            <Eyebrow>Stroom in je camper</Eyebrow>
-            <h1>Weet wat je camper nodig heeft, vóór je iets koopt.</h1>
-            <p className="lead">
-              Bereken welke accu, zonnepanelen en laders passen bij hoe jij reist. Met Nederlandse zondata, een complete
-              stuklijst en de checks die een vakman ook doet.
-            </p>
-            <div className="hero-actions">
-              <Link href="/configurator" className="btn btn-primary btn-lg">
-                Bereken je systeem
-              </Link>
-              <Link href="/accu-leeg" className="btn btn-secondary btn-lg">
-                Accu steeds leeg?
-              </Link>
-            </div>
-            <ul className="hero-proof">
-              <li>Gratis, zonder account</li>
-              <li>Geen cookies</li>
-              <li>Formules openbaar</li>
-            </ul>
+      <section className="hero-bleed">
+        <CoverPhoto image={IMAGES.hero} className="hero-media" priority sizes="100vw" />
+        <div className="hero-scrim" aria-hidden="true" />
+        <div className="hero-copy">
+          <Eyebrow>Stroom in je camper</Eyebrow>
+          <h1>Weet wat je camper nodig heeft, vóór je iets koopt.</h1>
+          <p className="lead">
+            Bereken welke accu, zonnepanelen en laders passen bij hoe jij reist. Met Nederlandse zondata, een complete
+            stuklijst en de checks die een vakman ook doet.
+          </p>
+          <div className="hero-actions">
+            <Link href="/configurator" className="btn btn-primary btn-lg">
+              Bereken je systeem
+            </Link>
+            <Link href="/accu-leeg" className="btn btn-secondary btn-lg">
+              Accu steeds leeg?
+            </Link>
           </div>
-          <Photo image={IMAGES.hero} priority sizes="(min-width: 960px) 46vw, 100vw" className="hero-photo" />
+          <ul className="hero-proof">
+            <li>Gratis, zonder account</li>
+            <li>Geen cookies</li>
+            <li>Formules openbaar</li>
+          </ul>
         </div>
       </section>
 
@@ -98,13 +99,33 @@ export function HomePage() {
 
       <section className="section section-tint" aria-labelledby="h-example">
         <div className="wrap">
-          <div className="section-head">
-            <Eyebrow>Voorbeeld</Eyebrow>
-            <h2 id="h-example">Zo ziet een uitkomst eruit</h2>
-            <p>
-              Een stel op rondreis door Europa, van mei tot september. Koelkast, laptop, dakventilator. Samen{' '}
-              <strong>{kwh(example.result.dailyWh)}</strong> per dag.
-            </p>
+          <div className="story">
+            <Photo image={IMAGES.couple} sizes="(min-width: 960px) 38vw, 100vw" className="story-photo" />
+            <div>
+              <Eyebrow>Voorbeeld</Eyebrow>
+              <h2 id="h-example">Een rondreis van mei tot september</h2>
+              <p>
+                Een stel, koelkast, laptop en dakventilator. Samen <strong>{kwh(example.result.dailyWh)}</strong> per dag.
+                Dit is de uitkomst vóór je de grafieken induikt.
+              </p>
+              <dl className="stats">
+                <div>
+                  <dt>Verbruik per dag</dt>
+                  <dd>{kwh(example.result.dailyWh)}</dd>
+                </div>
+                <div className="is-mark">
+                  <dt>Accu, LiFePO4</dt>
+                  <dd>{fmt(example.result.battery.ah)} Ah</dd>
+                </div>
+                <div>
+                  <dt>Zonnepanelen</dt>
+                  <dd>{fmt(example.result.solar.wp)} Wp</dd>
+                </div>
+              </dl>
+              <p className="source-line">
+                Bron: PVGIS, De Bilt, 2013–2020. <Link href="/methode">Zo rekenen wij</Link>.
+              </p>
+            </div>
           </div>
           <div className="example-grid">
             <div className="panel">
@@ -128,21 +149,47 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="band" aria-labelledby="h-days">
+        <CoverPhoto image={IMAGES.night} className="band-media" sizes="100vw" />
+        <div className="band-scrim" aria-hidden="true" />
+        <div className="wrap band-copy">
+          <Eyebrow>Zonder paal</Eyebrow>
+          <p className="band-stat" id="h-days">
+            {fmt1(example.result.battery.daysWithoutCharging)} dagen
+          </p>
+          <p>
+            Zo lang komt dit voorbeeld toe met een volle accu, zonder bij te laden. Daarna tellen zon, rijden en af en toe
+            een camping.
+          </p>
+        </div>
+      </section>
+
       <section className="section" aria-labelledby="h-sun">
         <div className="wrap split">
           <div>
             <Eyebrow>Zon in Nederland</Eyebrow>
             <h2 id="h-sun">In december levert je paneel een tiende van juli</h2>
+            <dl className="stats">
+              <div className="is-mark">
+                <dt>Juli, per 100 Wp</dt>
+                <dd>{fmt(july)} Wh</dd>
+              </div>
+              <div>
+                <dt>December, per 100 Wp</dt>
+                <dd>{fmt(december)} Wh</dd>
+              </div>
+            </dl>
             <p>
-              Een zonnepaneel van 100 Wp, plat op het dak, levert in juli gemiddeld{' '}
-              <strong className="num">{fmt(100 * NL_IRRADIATION[6] * PERFORMANCE_RATIO)} Wh</strong> per dag. In december is
-              dat <strong className="num">{fmt(100 * NL_IRRADIATION[11] * PERFORMANCE_RATIO)} Wh</strong>. Wie ook in het
-              voor- of najaar reist, heeft meer paneel nodig, of laadt bij tijdens het rijden.
+              Plat op het dak, gemiddeld per dag. Wie ook in het voor- of najaar reist, heeft meer paneel nodig, of laadt bij
+              tijdens het rijden.
             </p>
-            <p className="muted small">
+            <p className="source-line">
               Bron: PVGIS (Europese Commissie), De Bilt, gemiddelde 2013–2020. <Link href="/methode">Zo rekenen wij</Link>.
             </p>
           </div>
+          <Photo image={IMAGES.solarRoof} sizes="(min-width: 960px) 46vw, 100vw" />
+        </div>
+        <div className="wrap">
           <figure className="sun-bars" aria-label="Opbrengst per dag van 100 Wp per maand">
             {NL_IRRADIATION.map((h, i) => (
               <div key={i} className="sun-row">
@@ -159,7 +206,7 @@ export function HomePage() {
 
       <section className="section section-tint" aria-labelledby="h-how">
         <div className="wrap split split-photo">
-          <Photo image={IMAGES.departure} sizes="(min-width: 960px) 40vw, 100vw" />
+          <Photo image={IMAGES.interior} sizes="(min-width: 960px) 40vw, 100vw" />
           <div>
             <Eyebrow>Hoe wij werken</Eyebrow>
             <h2 id="h-how">Rekenen zoals een vakman, uitleggen zoals een buurman</h2>
@@ -174,13 +221,30 @@ export function HomePage() {
               </li>
               <li>
                 <h3>Onafhankelijk</h3>
-                <p>We verkopen niets. Gaan we ooit naar winkels linken, dan staat dat er altijd bij.</p>
+                <p>We verkopen niets. Gaan we ooit naar winkels linken, dan staat dat er altijd bij, en nooit bij een negatief advies.</p>
               </li>
             </ol>
             <Link href="/methode" className="text-link">
               Lees hoe we rekenen →
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="band" aria-labelledby="h-nl">
+        <CoverPhoto image={IMAGES.forest} className="band-media" sizes="100vw" />
+        <div className="band-scrim" aria-hidden="true" />
+        <div className="wrap band-copy">
+          <p className="band-title" id="h-nl">
+            De cijfers zijn van De Bilt.
+          </p>
+          <p>
+            Of je in de Veluwe staat of verderop in de bergen: we rekenen met de maand waarin je reist, niet met een
+            gemiddelde zomer.
+          </p>
+          <Link href="/methode" className="text-link">
+            Bekijk de formules →
+          </Link>
         </div>
       </section>
 
@@ -207,13 +271,13 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="cta-band">
-        <div className="wrap cta-inner">
-          <div>
-            <h2>Klaar om te rekenen?</h2>
-            <p>Vier stappen. Je uitkomst blijft bewaard op dit apparaat en kun je delen.</p>
-          </div>
-          <Link href="/configurator" className="btn btn-accent btn-lg">
+      <section className="band" aria-labelledby="h-cta">
+        <CoverPhoto image={IMAGES.vintage} className="band-media" sizes="100vw" />
+        <div className="band-scrim" aria-hidden="true" />
+        <div className="wrap band-copy">
+          <h2 id="h-cta">Klaar om te rekenen?</h2>
+          <p>Vier stappen. Je uitkomst blijft bewaard op dit apparaat en kun je delen.</p>
+          <Link href="/configurator" className="btn btn-primary btn-lg">
             Bereken je systeem
           </Link>
         </div>

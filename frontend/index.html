@@ -8,7 +8,7 @@
       name="description"
       content="Bereken welke accu, zonnepanelen en laders je camper nodig heeft. Onafhankelijk, met Nederlandse zondata, een stuklijst en veiligheidschecks."
     />
-    <meta name="theme-color" content="#F7F9F7" />
+    <meta name="theme-color" content="#F6F0E4" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="nl_NL" />
@@ -18,7 +18,18 @@
       property="og:description"
       content="Bereken welke accu, zonnepanelen en laders je camper nodig heeft. Met Nederlandse zondata, een stuklijst en veiligheidschecks."
     />
-    <meta property="og:image" content="/images/camper-landschap-1600.webp" />
+    <meta property="og:image" content="https://camperpower.vercel.app/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="CamperPower: een crème camper in een bergweide bij gouden licht" />
+    <script>
+      try {
+        var t = localStorage.getItem('camperpower.theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+        var dark = t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+        if (dark) document.querySelector('meta[name="theme-color"]').setAttribute('content', '#14110C')
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

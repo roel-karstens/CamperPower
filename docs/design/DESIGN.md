@@ -1,5 +1,9 @@
 # CamperPower Design Document
 
+The live tokens, type, and components are in [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md). This file is the earlier intent note. Where they differ, DESIGN-SYSTEM.md wins.
+
+
+
 ## Design Intent
 Design for confidence under uncertainty: users are often stressed, time-limited, and worried about making expensive or unsafe electrical choices.
 

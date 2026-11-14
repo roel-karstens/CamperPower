@@ -21,6 +21,7 @@ export const GUIDES: Guide[] = [
     title: 'Je dagverbruik berekenen',
     summary: 'Alles begint bij watt × uur. Zo schat je het goed in, en hier zitten de valkuilen.',
     minutes: 4,
+    image: IMAGES.guideUse,
     cta: { href: '/configurator', label: 'Bereken je verbruik' },
     body: () => (
       <>
@@ -63,6 +64,7 @@ export const GUIDES: Guide[] = [
     title: 'Hoeveel zonnepaneel heb je nodig?',
     summary: 'De opbrengst verschilt per maand een factor tien. Zo reken je met de juiste maand.',
     minutes: 5,
+    image: IMAGES.guideSolar,
     cta: { href: '/configurator', label: 'Bereken je zonnepanelen' },
     body: () => (
       <>
@@ -119,7 +121,7 @@ export const GUIDES: Guide[] = [
     title: 'LiFePO4 of AGM?',
     summary: 'Waarom bijna iedereen naar lithium overstapt, en wanneer AGM nog volstaat.',
     minutes: 4,
-    image: IMAGES.battery,
+    image: IMAGES.guideBattery,
     cta: { href: '/lithium-check', label: 'Doe de lithium-check' },
     body: () => (
       <>
@@ -170,6 +172,7 @@ export const GUIDES: Guide[] = [
     title: 'DC-DC-lader: laden tijdens het rijden',
     summary: 'Waarom lithium niet direct aan de dynamo mag, en wat een slimme dynamo verandert.',
     minutes: 4,
+    image: IMAGES.guideDrive,
     cta: { href: '/configurator', label: 'Bereken je laders' },
     body: () => (
       <>
@@ -214,7 +217,7 @@ export const GUIDES: Guide[] = [
     title: 'Lithium op een oude EBL',
     summary: 'Schaudt, Nordelettronica, CBE: wat je moet weten voor je een lithiumaccu aansluit.',
     minutes: 5,
-    image: IMAGES.charger,
+    image: IMAGES.guideOld,
     cta: { href: '/lithium-check', label: 'Doe de lithium-check' },
     body: () => (
       <>
@@ -255,6 +258,7 @@ export const GUIDES: Guide[] = [
     title: 'Kabels en zekeringen',
     summary: 'Te dunne kabels worden heet en kosten energie. Zo kies je de juiste doorsnede.',
     minutes: 5,
+    image: IMAGES.guideCable,
     cta: { href: '/configurator', label: 'Bereken je kabels' },
     body: () => (
       <>
@@ -305,7 +309,7 @@ export const GUIDES: Guide[] = [
     title: 'Veilig installeren',
     summary: 'De vijf regels die brand voorkomen, en wanneer je het aan een vakman overlaat.',
     minutes: 4,
-    image: IMAGES.selfBuild,
+    image: IMAGES.guideInstall,
     cta: { href: '/configurator', label: 'Bereken je systeem' },
     body: () => (
       <>
@@ -349,6 +353,7 @@ export const GUIDES: Guide[] = [
     title: 'Powerstation of vaste installatie?',
     summary: 'Een powerstation is makkelijk. Een vaste installatie laadt beter onderweg. Zo kies je.',
     minutes: 4,
+    image: IMAGES.guidePower,
     cta: { href: '/powerstation-of-vast', label: 'Doe de keuzehulp' },
     body: () => (
       <>

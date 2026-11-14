@@ -2,6 +2,54 @@ import { useEffect, useState } from 'react'
 import { Link } from '../lib/router'
 import { useRouter } from '../lib/useRouter'
 
+function ThemeToggle() {
+  const [explicit, setExplicit] = useState<'light' | 'dark' | null>(() => {
+    const t = document.documentElement.dataset.theme
+    return t === 'light' || t === 'dark' ? t : null
+  })
+  const [systemDark, setSystemDark] = useState(() => window.matchMedia('(prefers-color-scheme: dark)').matches)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)')
+    const onChange = () => setSystemDark(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
+  const theme = explicit ?? (systemDark ? 'dark' : 'light')
+
+  function toggle() {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    setExplicit(next)
+    document.documentElement.dataset.theme = next
+    localStorage.setItem('camperpower.theme', next)
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#14110C' : '#F6F0E4')
+  }
+
+  const toDark = theme !== 'dark'
+  return (
+    <button type="button" className="theme-toggle" onClick={toggle} aria-pressed={theme === 'dark'}>
+      <span className="sr-only">{toDark ? 'Donkere weergave' : 'Lichte weergave'}</span>
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+        {toDark ? (
+          <>
+            <circle cx="9" cy="9" r="3.1" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            <path
+              d="M9 1.4v1.7M9 14.9v1.7M1.4 9h1.7M14.9 9h1.7M3.5 3.5l1.2 1.2M13.3 13.3l1.2 1.2M14.5 3.5l-1.2 1.2M4.7 13.3l-1.2 1.2"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+          </>
+        ) : (
+          <path d="M10.1 1.8A6.4 6.4 0 1 0 16.2 11.6 5 5 0 0 1 10.1 1.8Z" fill="currentColor" />
+        )}
+      </svg>
+    </button>
+  )
+}
+
 const NAV = [
   { href: '/accu-leeg', label: 'Accu leeg?' },
   { href: '/powerstation-of-vast', label: 'Powerstation of vast' },
@@ -13,11 +61,11 @@ export function Logo() {
   return (
     <Link href="/" className="logo" aria-label="CamperPower, naar de homepage">
       <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
-        <rect width="28" height="28" rx="7" fill="var(--primary)" />
-        <rect x="6" y="10" width="14" height="10" rx="2" fill="none" stroke="var(--canvas)" strokeWidth="1.8" />
-        <rect x="20.5" y="13" width="2" height="4" rx="0.8" fill="var(--canvas)" />
-        <rect x="8.2" y="12.2" width="6.4" height="5.6" rx="1" fill="var(--accent)" />
-        <circle cx="20" cy="6.5" r="2.2" fill="var(--accent)" />
+        <rect width="28" height="28" rx="2" fill="var(--accent)" />
+        <rect x="6" y="10" width="14" height="10" rx="1.5" fill="none" stroke="var(--accent-fg)" strokeWidth="1.6" />
+        <rect x="20.5" y="13" width="2" height="4" rx="0.6" fill="var(--accent-fg)" />
+        <rect x="8.2" y="12.2" width="6.2" height="5.4" rx="0.6" fill="var(--mark)" />
+        <circle cx="20" cy="6.6" r="2" fill="var(--footer-hover)" />
       </svg>
       <span>CamperPower</span>
     </Link>
@@ -52,6 +100,7 @@ export function Header() {
             </Link>
           ))}
         </nav>
+        <ThemeToggle />
         <Link href="/configurator" className="btn btn-primary btn-sm header-cta">
           Bereken je systeem
         </Link>

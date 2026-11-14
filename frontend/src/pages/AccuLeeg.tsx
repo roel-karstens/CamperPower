@@ -190,6 +190,7 @@ export function AccuLeegPage() {
             requestAnimationFrame(() => resultRef.current?.focus())
           }}
         >
+          <h2 className="form-group">Wat er gebeurt</h2>
           <ChoiceCards<When>
             legend="1. Wanneer is de accu leeg?"
             columns={2}
@@ -224,6 +225,7 @@ export function AccuLeegPage() {
               { value: 'unknown', label: 'Weet ik niet' },
             ]}
           />
+          <h2 className="form-group">Laden</h2>
           <ChoiceCards<DriveCharge>
             legend="4. Wordt de accu voller als je een uur rijdt?"
             hint="Kijk op het bedieningspaneel of de accumonitor, voor en na het rijden."
@@ -256,6 +258,7 @@ export function AccuLeegPage() {
               { value: 'large', label: 'Meer dan 150 Wp' },
             ]}
           />
+          <h2 className="form-group">Omvormer</h2>
           <ChoiceCards<Inverter>
             legend="7. Staat de omvormer (230V-stopcontact) vaak aan?"
             value={a.inverter as Inverter}
@@ -276,42 +279,56 @@ export function AccuLeegPage() {
           </div>
         </form>
 
-        {submitted && complete && (
+        {submitted && complete && causes[0] && (
           <section className="tool-result" aria-labelledby="diag-result">
+            <p className="eyebrow">Meest waarschijnlijk</p>
             <h2 id="diag-result" ref={resultRef} tabIndex={-1}>
-              Waarschijnlijke oorzaken
+              {causes[0].title}
             </h2>
-            <p className="muted">
-              Op volgorde van waarschijnlijkheid, op basis van je antwoorden. Vaak spelen er twee tegelijk.
-            </p>
-            <ol className="causes">
-              {causes.map((c, i) => {
-                const l = likelihood(c.score, top, i === 0)
-                return (
-                  <li key={c.id} className={`cause cause-${l.cls}`}>
-                    <div className="cause-head">
-                      <h3>{c.title}</h3>
-                      <span className={`pill pill-${l.cls}`}>{l.label}</span>
-                    </div>
-                    <div className="meter" aria-hidden="true">
-                      <span style={{ width: `${Math.max(12, (c.score / top) * 100)}%` }} />
-                    </div>
-                    <p>{c.why}</p>
-                    <h4>Wat je kunt doen</h4>
-                    <ul>
-                      {c.fix.map((f) => (
-                        <li key={f}>{f}</li>
-                      ))}
-                    </ul>
-                    {c.link && (
-                      <Link href={c.link.href} className="text-link">
-                        {c.link.label} →
-                      </Link>
-                    )}
-                  </li>
-                )
-              })}
-            </ol>
+            <p className="lead">{causes[0].why}</p>
+            <h3>Wat je kunt doen</h3>
+            <ul>
+              {causes[0].fix.map((f) => (
+                <li key={f}>{f}</li>
+              ))}
+            </ul>
+            {causes[0].link && (
+              <Link href={causes[0].link.href} className="text-link">
+                {causes[0].link.label} →
+              </Link>
+            )}
+            {causes.length > 1 && (
+              <details className="assumptions">
+                <summary>
+                  <h2>Andere mogelijke oorzaken</h2>
+                </summary>
+                <ol className="causes">
+                  {causes.slice(1).map((c) => {
+                    const l = likelihood(c.score, top, false)
+                    return (
+                      <li key={c.id} className={`cause cause-${l.cls}`}>
+                        <div className="cause-head">
+                          <h3>{c.title}</h3>
+                          <span className={`pill pill-${l.cls}`}>{l.label}</span>
+                        </div>
+                        <p>{c.why}</p>
+                        <h4>Wat je kunt doen</h4>
+                        <ul>
+                          {c.fix.map((f) => (
+                            <li key={f}>{f}</li>
+                          ))}
+                        </ul>
+                        {c.link && (
+                          <Link href={c.link.href} className="text-link">
+                            {c.link.label} →
+                          </Link>
+                        )}
+                      </li>
+                    )
+                  })}
+                </ol>
+              </details>
+            )}
             <div className="next-box">
               <h3>Structureel oplossen?</h3>
               <p>Bereken welke accu, zonnepanelen en laders passen bij hoe jij reist.</p>
