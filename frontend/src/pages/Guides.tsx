@@ -95,7 +95,10 @@ export function GuidesPage() {
               const g = guides.find((x) => x.slug === slug)
               if (!g) return null
               return (
-                <Link key={g.slug} href={`/gidsen/${g.slug}`} className="card card-link">
+                <Link key={g.slug} href={`/gidsen/${g.slug}`} className="card card-link guide-card">
+                  {g.image && (
+                    <Photo image={g.image} sizes="(min-width: 960px) 40vw, 100vw" className="guide-card-photo" />
+                  )}
                   <span className="card-meta">{t.minutes(g.minutes)}</span>
                   <span className="card-title">{g.title}</span>
                   <span className="card-text">{g.summary}</span>
@@ -129,12 +132,14 @@ export function GuidePage({ slug }: { slug: string }) {
           <span aria-hidden="true">/</span>
           <span aria-current="page">{guide.title}</span>
         </nav>
+        {guide.image && (
+          <Photo image={guide.image} sizes="(min-width: 760px) 720px, 100vw" className="guide-header-photo" />
+        )}
         <header className="article-head">
           <p className="card-meta">{t.minutes(guide.minutes)}</p>
           <h1>{guide.title}</h1>
           <p className="lead">{guide.summary}</p>
         </header>
-        {guide.image && <Photo image={guide.image} sizes="(min-width: 760px) 720px, 100vw" />}
         <div className="prose">
           <Body />
         </div>

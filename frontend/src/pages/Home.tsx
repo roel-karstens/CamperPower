@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { EnergyChart, SystemDiagram } from '../components/charts'
+import { GuideReel } from '../components/GuideReel'
 import { CoverPhoto, Photo } from '../components/Photo'
 import { Eyebrow } from '../components/ui'
 import { useGuides } from '../data/guides'
@@ -220,15 +221,13 @@ export function HomePage() {
               {t.allGuides} →
             </Link>
           </div>
-          <div className="card-grid cols-3">
-            {guides.slice(0, 6).map((g) => (
-              <Link key={g.slug} href={`/gidsen/${g.slug}`} className="card card-link">
-                <span className="card-meta">{t.minutes(g.minutes)}</span>
-                <span className="card-title">{g.title}</span>
-                <span className="card-text">{g.summary}</span>
-              </Link>
-            ))}
-          </div>
+          <GuideReel
+            guides={guides}
+            minutes={t.minutes}
+            label={t.reelLabel}
+            prevLabel={t.reelPrev}
+            nextLabel={t.reelNext}
+          />
         </div>
       </section>
 
